@@ -471,17 +471,17 @@ function Capabilities() {
 
         <div className="relative">
           <div className="rounded-[28px] border bg-white shadow-[0_20px_60px_-36px_rgba(31,40,57,0.55)]">
-            <div className="flex items-center justify-between gap-3 border-b px-4 py-3">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
               <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-capability-preview-title">
                 <span className="h-2 w-2 rounded-full bg-[hsl(var(--primary))]" />
-                Product preview
+                Live UI preview
               </div>
               <div className="flex items-center gap-2">
                 <Badge className="rounded-full" data-testid="badge-capability-status">
                   AI Hub
                 </Badge>
                 <span className="text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-capability-status">
-                  Updated workflow
+                  Real screens
                 </span>
               </div>
             </div>
