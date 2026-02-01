@@ -374,10 +374,11 @@ function Proof() {
               <div className="text-sm font-semibold" data-testid="text-proof-title">
                 What changes for your team
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-[hsl(var(--muted-foreground))]" data-testid="text-proof-sub">
-                Fewer tabs, fewer copy-pastes, and fewer dead-ends. Each module is designed to be explainable, structured, and easy to cite.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2" data-testid="row-proof-badges">
+              <div className="grid gap-2" data-testid="stack-proof-copy">
+                <p className="text-sm leading-relaxed text-[hsl(var(--muted-foreground))]" data-testid="text-proof-sub">
+                  Fewer tabs, fewer copy-pastes, and fewer dead-ends. Each module is designed to be explainable, structured, and easy to cite.
+                </p>
+                <div className="flex flex-wrap gap-2" data-testid="row-proof-badges">
                 {["Trusted sources", "Citations", "CNR", "Document chat", "Compliance"].map((t) => (
                   <Badge key={t} variant="secondary" className="rounded-full bg-white" data-testid={`badge-proof-${t.toLowerCase().replaceAll(" ", "-")}`}>
                     {t}
