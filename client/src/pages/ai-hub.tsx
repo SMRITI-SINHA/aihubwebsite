@@ -809,8 +809,8 @@ function AiHub() {
             </div>
           </div>
 
-          <div className="mt-5 grid gap-6 [@media(min-width:900px)]:grid-cols-[340px,1fr] [@media(min-width:900px)]:items-start">
-            <div>
+          <div className="mt-5 flex flex-col gap-6 [@media(min-width:960px)]:flex-row [@media(min-width:960px)]:items-start">
+            <div className="w-full [@media(min-width:960px)]:w-[340px]">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <div className="text-sm font-semibold" data-testid="text-hub-active-group">{activeGroup.title}</div>
