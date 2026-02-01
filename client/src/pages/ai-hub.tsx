@@ -535,7 +535,6 @@ function Highlights() {
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
                             <div className="text-sm font-semibold" data-testid={`text-highlights-item-title-${idx}`}>{it.title}</div>
-                            <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-highlights-item-desc-${idx}`}>{it.desc}</div>
                           </div>
                           <span className={cn(
                             "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border bg-white transition",
