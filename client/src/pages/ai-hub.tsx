@@ -764,39 +764,48 @@ function AiHub() {
             Modules
           </div>
 
-          <div className="mt-3 overflow-x-auto">
-            <div className="flex w-max items-center gap-2" data-testid="row-hub-tabs">
-              {groups.map((grp, idx) => {
-                const selected = idx === g;
-                const Icon = grp.icon;
-                return (
-                  <button
-                    key={grp.title}
-                    className={cn(
-                      "group inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-semibold transition",
-                      selected
-                        ? "bg-white shadow-sm border-[hsl(var(--primary))]/25"
-                        : "bg-white/60 border-black/10 hover:bg-white",
-                    )}
-                    onClick={() => {
-                      setG(idx);
-                      setI(0);
-                    }}
-                    data-testid={`tab-hub-module-${idx}`}
-                    type="button"
-                  >
-                    <span
-                      className={cn(
-                        "grid h-7 w-7 place-items-center rounded-full border bg-[hsl(var(--background))]",
-                        selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
-                      )}
-                    >
-                      <Icon className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--foreground))]/70")} />
-                    </span>
-                    <span data-testid={`text-hub-tab-title-${idx}`}>{grp.title}</span>
-                  </button>
-                );
-              })}
+          <div className="mt-3" data-testid="panel-hub-tabs">
+            <div className="rounded-full border bg-[hsl(var(--card))]/70 p-1 shadow-sm backdrop-blur">
+              <div className="flex overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none]">
+                <div className="flex w-max items-center gap-1" data-testid="row-hub-tabs">
+                  {groups.map((grp, idx) => {
+                    const selected = idx === g;
+                    const Icon = grp.icon;
+                    return (
+                      <button
+                        key={grp.title}
+                        className={cn(
+                          "relative inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold transition",
+                          selected
+                            ? "bg-white shadow-sm"
+                            : "text-[hsl(var(--foreground))]/70 hover:text-[hsl(var(--foreground))]/90",
+                        )}
+                        onClick={() => {
+                          setG(idx);
+                          setI(0);
+                        }}
+                        data-testid={`tab-hub-module-${idx}`}
+                        type="button"
+                      >
+                        <span
+                          className={cn(
+                            "grid h-7 w-7 place-items-center rounded-full border bg-[hsl(var(--background))] transition",
+                            selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
+                          )}
+                        >
+                          <Icon
+                            className={cn(
+                              "h-4 w-4",
+                              selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--foreground))]/70",
+                            )}
+                          />
+                        </span>
+                        <span data-testid={`text-hub-tab-title-${idx}`}>{grp.title}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
 
