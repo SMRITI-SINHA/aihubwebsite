@@ -866,48 +866,70 @@ function AiHub() {
                   </div>
 
                   <div className="p-3 md:p-4">
-                    <div className="relative overflow-hidden rounded-2xl border bg-[hsl(var(--card))]/60" data-testid="video-hub-container">
-                      {activeItem.video ? (
-                        <motion.video
-                          key={activeItem.title}
-                          src={activeItem.video}
-                          className="block w-full"
-                          controls
-                          playsInline
-                          preload="metadata"
-                          data-testid="video-hub-preview"
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -8 }}
-                          transition={{ duration: 0.25 }}
-                        />
-                      ) : (
-                        <div className="grid aspect-video w-full place-items-center bg-white/60" data-testid="placeholder-hub-video">
-                          <div className="text-center">
-                            <div className="text-sm font-semibold" data-testid="text-hub-placeholder-title">Add a video for this feature</div>
-                            <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-placeholder-sub">
-                              Upload an .mp4 and we’ll wire it in.
+                    <div className="grid gap-4 lg:grid-cols-[1.35fr,0.65fr] lg:items-start">
+                      <div>
+                        <div className="relative overflow-hidden rounded-2xl border bg-[hsl(var(--card))]/60" data-testid="video-hub-container">
+                          {activeItem.video ? (
+                            <motion.video
+                              key={activeItem.title}
+                              src={activeItem.video}
+                              className="block w-full"
+                              controls
+                              playsInline
+                              preload="metadata"
+                              data-testid="video-hub-preview"
+                              initial={{ opacity: 0, y: 8 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -8 }}
+                              transition={{ duration: 0.25 }}
+                            />
+                          ) : (
+                            <div className="grid aspect-video w-full place-items-center bg-white/60" data-testid="placeholder-hub-video">
+                              <div className="text-center">
+                                <div className="text-sm font-semibold" data-testid="text-hub-placeholder-title">Add a video for this feature</div>
+                                <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-placeholder-sub">
+                                  Upload an .mp4 and we’ll wire it in.
+                                </div>
+                              </div>
                             </div>
-                          </div>
+                          )}
                         </div>
-                      )}
-                    </div>
 
-                    <div className="mt-4 rounded-2xl border bg-white/60 p-4" data-testid="panel-hub-points">
-                      <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-hub-points-title">
-                        <Check className="h-4 w-4 text-[hsl(var(--primary))]" />
-                        Key highlights
+                        <div className="mt-4 rounded-2xl border bg-white/60 p-4" data-testid="panel-hub-points">
+                          <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-hub-points-title">
+                            <Check className="h-4 w-4 text-[hsl(var(--primary))]" />
+                            Key highlights
+                          </div>
+                          <ul className="mt-3 space-y-2">
+                            {(activeItem.points ?? []).map((p: string, idx: number) => (
+                              <li key={p} className="flex items-start gap-2" data-testid={`row-hub-point-${idx}`}>
+                                <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-[hsl(var(--primary))]/12">
+                                  <Check className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
+                                </span>
+                                <span className="text-sm text-[hsl(var(--foreground))]/85" data-testid={`text-hub-point-${idx}`}>{p}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                      <ul className="mt-3 space-y-2">
-                        {(activeItem.points ?? []).map((p: string, idx: number) => (
-                          <li key={p} className="flex items-start gap-2" data-testid={`row-hub-point-${idx}`}>
-                            <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-[hsl(var(--primary))]/12">
-                              <Check className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
-                            </span>
-                            <span className="text-sm text-[hsl(var(--foreground))]/85" data-testid={`text-hub-point-${idx}`}>{p}</span>
-                          </li>
-                        ))}
-                      </ul>
+
+                      <div className="rounded-2xl border bg-[hsl(var(--card))]/60 p-4" data-testid="panel-hub-side">
+                        <div className="text-xs font-semibold text-[hsl(var(--foreground))]/70" data-testid="text-hub-side-title">
+                          At a glance
+                        </div>
+                        <div className="mt-2 text-sm font-semibold" data-testid="text-hub-side-feature">{activeItem.title}</div>
+                        <div className="mt-1 text-xs leading-relaxed text-[hsl(var(--muted-foreground))]" data-testid="text-hub-side-desc">
+                          {activeItem.desc}
+                        </div>
+                        <div className="mt-4 grid gap-2" data-testid="list-hub-side-tags">
+                          {(activeItem.points ?? []).slice(0, 3).map((p: string, idx: number) => (
+                            <div key={p} className="flex items-center gap-2 rounded-xl border bg-white/60 px-3 py-2" data-testid={`row-hub-side-tag-${idx}`}>
+                              <span className="h-2 w-2 rounded-full bg-[hsl(var(--primary))]" />
+                              <span className="text-xs text-[hsl(var(--foreground))]/80" data-testid={`text-hub-side-tag-${idx}`}>{p}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
