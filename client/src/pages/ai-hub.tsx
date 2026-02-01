@@ -617,57 +617,68 @@ function AiHub() {
             </div>
           </div>
 
-          <div className="mt-5 flex flex-col gap-6 [@media(min-width:960px)]:flex-row [@media(min-width:960px)]:items-start">
+          <div className="mt-5 flex flex-col gap-0 [@media(min-width:960px)]:flex-row [@media(min-width:960px)]:items-stretch" data-testid="layout-hub">
             <div className="w-full [@media(min-width:960px)]:w-[340px]">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <div className="text-sm font-semibold" data-testid="text-hub-active-group">{activeGroup.title}</div>
-                  <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-active-group-sub">
-                    Choose a tool to preview
+              <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3" data-testid="panel-hub-left">
+                <div className="rounded-[18px] border bg-white shadow-sm">
+                  <div className="flex items-center justify-between gap-3 border-b px-4 py-3">
+                    <div>
+                      <div className="text-sm font-semibold" data-testid="text-hub-active-group">{activeGroup.title}</div>
+                      <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-active-group-sub">
+                        Choose a tool to preview
+                      </div>
+                    </div>
+                    <Badge className="rounded-full" data-testid="badge-hub">AI Hub</Badge>
+                  </div>
+
+                  <div className="p-2" data-testid="list-hub-tools">
+                    <div className="grid gap-2">
+                      {activeGroup.items.map((it, idx) => {
+                        const selected = idx === i;
+                        return (
+                          <button
+                            key={it.title}
+                            className={cn(
+                              "group w-full rounded-2xl border px-4 py-3 text-left transition",
+                              selected
+                                ? "bg-[hsl(var(--background))] shadow-sm border-[hsl(var(--primary))]/25"
+                                : "bg-white hover:bg-[hsl(var(--background))] border-black/10",
+                            )}
+                            onClick={() => setI(idx)}
+                            data-testid={`button-hub-item-${idx}`}
+                            type="button"
+                          >
+                            <div className="flex items-start justify-between gap-3">
+                              <div className="min-w-0">
+                                <div className="text-sm font-semibold" data-testid={`text-hub-item-title-${idx}`}>{it.title}</div>
+                                <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-hub-item-desc-${idx}`}>{it.desc}</div>
+                              </div>
+                              <span
+                                className={cn(
+                                  "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border bg-white transition",
+                                  selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
+                                )}
+                              >
+                                <ChevronRight className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--muted-foreground))]")} />
+                              </span>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-                <Badge className="rounded-full" data-testid="badge-hub">
-                  AI Hub
-                </Badge>
-              </div>
-
-              <div className="mt-4 space-y-2" data-testid="list-hub-tools">
-                {activeGroup.items.map((it, idx) => {
-                  const selected = idx === i;
-                  return (
-                    <button
-                      key={it.title}
-                      className={cn(
-                        "group w-full rounded-2xl border bg-white/60 px-4 py-3 text-left shadow-sm transition hover:bg-white",
-                        selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
-                      )}
-                      onClick={() => setI(idx)}
-                      data-testid={`button-hub-item-${idx}`}
-                      type="button"
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="min-w-0">
-                          <div className="text-sm font-semibold" data-testid={`text-hub-item-title-${idx}`}>{it.title}</div>
-                          <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-hub-item-desc-${idx}`}>{it.desc}</div>
-                        </div>
-                        <span className={cn(
-                          "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border bg-white transition",
-                          selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
-                        )}>
-                          <ChevronRight className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--muted-foreground))]")} />
-                        </span>
-                      </div>
-                    </button>
-                  );
-                })}
               </div>
             </div>
 
             <div className="relative" data-testid="panel-hub-preview">
-              <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3">
+              <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3 [@media(min-width:960px)]:-ml-px" data-testid="panel-hub-right">
                 <div className="rounded-[18px] border bg-white shadow-sm">
-                  <div className="flex items-center justify-between gap-2 border-b px-4 py-3">
-                    <div className="text-sm font-semibold" data-testid="text-hub-preview-title">{activeItem.title}</div>
+                  <div className="flex items-start justify-between gap-3 border-b px-4 py-3">
+                    <div className="min-w-0">
+                      <div className="text-sm font-semibold" data-testid="text-hub-preview-title">{activeItem.title}</div>
+                      <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-preview-desc">{activeItem.desc}</div>
+                    </div>
                     <Badge variant="secondary" className="rounded-full bg-white" data-testid="badge-hub-preview">
                       Video preview
                     </Badge>
@@ -706,11 +717,13 @@ function AiHub() {
                         </div>
 
                         <div className="mt-4 rounded-2xl border bg-white/60 p-4" data-testid="panel-hub-points">
-                          <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-hub-points-title">
-                            <Check className="h-4 w-4 text-[hsl(var(--primary))]" />
-                            Key highlights
+                          <div className="flex items-center justify-between gap-3" data-testid="row-hub-points-header">
+                            <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-hub-points-title">
+                              <Check className="h-4 w-4 text-[hsl(var(--primary))]" />
+                              Key highlights
+                            </div>
                           </div>
-                          <ul className="mt-3 space-y-2">
+                          <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2" data-testid="grid-hub-points">
                             {(activeItem.points ?? []).map((p: string, idx: number) => (
                               <li key={p} className="flex items-start gap-2" data-testid={`row-hub-point-${idx}`}>
                                 <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-[hsl(var(--primary))]/12">
