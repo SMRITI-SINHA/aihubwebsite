@@ -620,7 +620,7 @@ function AiHub() {
           <div className="mt-5 flex flex-col gap-0 [@media(min-width:960px)]:flex-row [@media(min-width:960px)]:items-stretch" data-testid="layout-hub">
             <div className="w-full [@media(min-width:960px)]:w-[340px]">
               <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3" data-testid="panel-hub-left">
-                <div className="rounded-[18px] border bg-white shadow-sm">
+                <div className="rounded-[18px] border bg-white shadow-sm overflow-hidden">
                   <div className="flex items-center justify-between gap-3 border-b px-4 py-3">
                     <div>
                       <div className="text-sm font-semibold" data-testid="text-hub-active-group">{activeGroup.title}</div>
@@ -651,7 +651,6 @@ function AiHub() {
                             <div className="flex items-start justify-between gap-3">
                               <div className="min-w-0">
                                 <div className="text-sm font-semibold" data-testid={`text-hub-item-title-${idx}`}>{it.title}</div>
-                                <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-hub-item-desc-${idx}`}>{it.desc}</div>
                               </div>
                               <span
                                 className={cn(
@@ -673,7 +672,7 @@ function AiHub() {
 
             <div className="relative" data-testid="panel-hub-preview">
               <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3 [@media(min-width:960px)]:-ml-px" data-testid="panel-hub-right">
-                <div className="rounded-[18px] border bg-white shadow-sm">
+                <div className="rounded-[18px] border bg-white shadow-sm overflow-hidden">
                   <div className="flex items-start justify-between gap-3 border-b px-4 py-3">
                     <div className="min-w-0">
                       <div className="text-sm font-semibold" data-testid="text-hub-preview-title">{activeItem.title}</div>
@@ -695,6 +694,9 @@ function AiHub() {
                               key={activeItem.title}
                               src={activeItem.video}
                               className="block w-full"
+                              autoPlay
+                              muted
+                              loop
                               controls
                               playsInline
                               preload="metadata"
