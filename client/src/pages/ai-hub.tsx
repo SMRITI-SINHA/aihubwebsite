@@ -866,7 +866,7 @@ function AiHub() {
                   </div>
 
                   <div className="p-3 md:p-4">
-                    <div className="grid gap-4 lg:grid-cols-[1.35fr,0.65fr] lg:items-start">
+                    <div className="grid gap-4">
                       <div>
                         <div className="relative overflow-hidden rounded-2xl border bg-[hsl(var(--card))]/60" data-testid="video-hub-container">
                           {activeItem.video ? (
