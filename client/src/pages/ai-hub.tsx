@@ -855,10 +855,11 @@ function Comparison() {
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
         <div className="relative overflow-hidden rounded-[34px] border bg-[radial-gradient(1200px_520px_at_50%_-12%,rgba(31,40,57,0.62),transparent)] p-8 text-white shadow-[0_30px_90px_-60px_rgba(0,0,0,0.9)] md:p-10">
           <div
-            className="pointer-events-none absolute inset-0 opacity-[0.16]"
+            className="pointer-events-none absolute inset-0 opacity-[0.10]"
             style={{ backgroundImage: "url(/images/noise-cream.jpg)", backgroundSize: "520px 520px" }}
           />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(180deg,rgba(0,0,0,0.35),transparent)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.52),rgba(0,0,0,0.20),rgba(0,0,0,0.36))]" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(180deg,rgba(0,0,0,0.22),transparent)]" />
 
           <div className="relative">
             <div
