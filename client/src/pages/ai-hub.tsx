@@ -411,58 +411,148 @@ function Proof() {
   );
 }
 
-function Outcomes() {
-  const tiles = [
+function Highlights() {
+  const items = [
     {
-      title: "CNR in seconds",
-      desc: "Pull case status quickly without jumping between portals.",
-      icon: Search,
+      title: "Multilingual drafting & translation",
+      desc: "Translate and draft across multiple languages without leaving the workspace.",
+      video: "/videos/Upload ref docs demo final - Made with Clipchamp.mp4",
     },
     {
-      title: "Trusted sources only",
-      desc: "Reduce noise and focus on reference-first results.",
-      icon: ShieldCheck,
+      title: "AI assistance inside the editor",
+      desc: "Context-aware help while you draft—so you stay in flow, not in prompts.",
+      video: "/videos/empty doc+ ai assis demo final - Made with Clipchamp.mp4",
     },
     {
-      title: "Document-heavy work, simplified",
-      desc: "Upload, chat, extract timelines, issues, and evidence.",
-      icon: Files,
+      title: "Nyaya AI where you need it",
+      desc: "Get Nyaya AI help via hover and directly inside DocuChat for faster answers.",
+      video: "/videos/Nyaya ai demo final - Made with Clipchamp.mp4",
     },
     {
-      title: "Drafting that stays structured",
-      desc: "From facts to export-ready drafts with guided prompts.",
-      icon: FileText,
+      title: "Research panel (Standard + Advanced)",
+      desc: "Switch between quick research and advanced mode with citations, timelines, and contradictions.",
+      video: "/videos/Research demo final - Made with Clipchamp.mp4",
+    },
+    {
+      title: "Notes that stay connected",
+      desc: "Capture notes during research and drafting so context is always reusable.",
+      video: "/videos/Legal Memo demo final - Made with Clipchamp.mp4",
+    },
+    {
+      title: "Calendar sync + compliance deadlines",
+      desc: "Connect Google Calendar to sync Chakshi deadlines and keep compliance dates updated.",
+      video: "/videos/Checklist demo final - Made with Clipchamp.mp4",
+    },
+    {
+      title: "Live in-app notifications",
+      desc: "Get live updates inside the app so tasks and deadlines don’t get missed.",
+      video: "/videos/Checklist demo final - Made with Clipchamp.mp4",
     },
   ];
 
+  const [active, setActive] = useState(0);
+  const current = items[active];
+
   return (
     <Section
-      id="outcomes"
-      kicker="Designed to compound"
-      title="Outcomes you can feel in week one"
-      description="Not a checklist of features—measurable speed, better source quality, and cleaner workflows."
+      id="highlights"
+      kicker="Premium capabilities"
+      title="Chakshi Highlights"
+      description="Advanced features designed for modern legal teams—built into the workspace, not bolted on."
     >
-      <div className="grid gap-4 md:grid-cols-2" data-testid="grid-outcomes">
-        {tiles.map((t, idx) => {
-          const Icon = t.icon;
-          return (
-            <div
-              key={t.title}
-              className="group rounded-[28px] border bg-white/60 p-6 shadow-sm backdrop-blur transition hover:bg-white"
-              data-testid={`card-outcome-${idx}`}
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <div className="text-sm font-semibold" data-testid={`text-outcome-title-${idx}`}>{t.title}</div>
-                  <div className="mt-2 text-sm text-[hsl(var(--muted-foreground))]" data-testid={`text-outcome-desc-${idx}`}>{t.desc}</div>
+      <div className="rounded-[30px] border bg-white/55 p-2 shadow-sm backdrop-blur">
+        <div className="grid gap-4 rounded-[26px] border bg-white p-4 md:grid-cols-[1.25fr,0.75fr] md:gap-6 md:p-6">
+          <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3" data-testid="panel-highlights-video">
+            <div className="rounded-[18px] border bg-white shadow-sm overflow-hidden">
+              <div className="flex items-start justify-between gap-3 border-b px-4 py-3">
+                <div className="min-w-0">
+                  <div className="text-sm font-semibold" data-testid="text-highlights-title">{current.title}</div>
+                  <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-highlights-desc">{current.desc}</div>
                 </div>
-                <span className="grid h-10 w-10 place-items-center rounded-2xl border bg-[hsl(var(--background))]">
-                  <Icon className="h-5 w-5 text-[hsl(var(--primary))]" />
-                </span>
+                <Badge variant="secondary" className="rounded-full bg-white" data-testid="badge-highlights-preview">
+                  Video demo
+                </Badge>
+              </div>
+
+              <div className="sr-only" data-testid="text-highlights-active-video-src">{current.video || ""}</div>
+
+              <div className="p-3 md:p-4">
+                <div className="relative overflow-hidden rounded-2xl border bg-[hsl(var(--card))]/60" data-testid="video-highlights-container">
+                  {current.video ? (
+                    <motion.video
+                      key={current.title}
+                      src={current.video}
+                      className="block w-full"
+                      autoPlay
+                      muted
+                      loop
+                      controls
+                      playsInline
+                      preload="metadata"
+                      data-testid="video-highlights-preview"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25 }}
+                    />
+                  ) : (
+                    <div className="grid aspect-video w-full place-items-center bg-white/60" data-testid="placeholder-highlights-video">
+                      <div className="text-center">
+                        <div className="text-sm font-semibold" data-testid="text-highlights-placeholder-title">Add a video for this feature</div>
+                        <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-highlights-placeholder-sub">
+                          Upload an .mp4 and we’ll wire it in.
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-          );
-        })}
+          </div>
+
+          <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3" data-testid="panel-highlights-list">
+            <div className="rounded-[18px] border bg-white shadow-sm overflow-hidden">
+              <div className="border-b px-4 py-3">
+                <div className="text-xs font-semibold text-[hsl(var(--foreground))]/70" data-testid="text-highlights-list-title">Highlights</div>
+              </div>
+
+              <div className="p-2">
+                <div className="grid gap-1" data-testid="list-highlights">
+                  {items.map((it, idx) => {
+                    const selected = idx === active;
+                    return (
+                      <button
+                        key={it.title}
+                        className={cn(
+                          "w-full rounded-2xl border px-3 py-2.5 text-left transition",
+                          selected
+                            ? "bg-[hsl(var(--background))] shadow-sm border-[hsl(var(--primary))]/25"
+                            : "bg-white hover:bg-[hsl(var(--background))] border-black/10",
+                        )}
+                        onClick={() => setActive(idx)}
+                        type="button"
+                        data-testid={`button-highlights-item-${idx}`}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="min-w-0">
+                            <div className="text-sm font-semibold" data-testid={`text-highlights-item-title-${idx}`}>{it.title}</div>
+                            <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-highlights-item-desc-${idx}`}>{it.desc}</div>
+                          </div>
+                          <span className={cn(
+                            "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border bg-white transition",
+                            selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
+                          )}>
+                            <ChevronRight className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--muted-foreground))]")} />
+                          </span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </Section>
   );
@@ -953,7 +1043,7 @@ export default function AiHubLanding() {
       <Hero />
       <Proof />
       <AiHub />
-      <Outcomes />
+      <Highlights />
       <Comparison />
       <FAQ />
       <Footer />
