@@ -661,29 +661,84 @@ function AiHub() {
         title: "Drafting",
         icon: Wand2,
         items: [
-          { title: "AI Legal Drafting", desc: "Draft with AI research panel integration.", img: editorResearchImg },
-          { title: "Empty Document", desc: "Start with an empty document.", img: hubGridImg },
-          { title: "Custom Drafting", desc: "Upload your format/template.", img: trainDraftsImg },
-          { title: "Train Your Drafts", desc: "Upload firm SOPs to train AI.", img: trainDraftsImg },
+          {
+            title: "AI Legal Drafting",
+            desc: "Draft with an integrated research panel and structured prompts.",
+            video: "",
+            points: ["Integrated research panel", "Structured prompts", "Clean export-ready drafting"],
+          },
+          {
+            title: "Empty Document",
+            desc: "Start from a blank doc and build with AI assistance.",
+            video: "",
+            points: ["Blank doc to draft", "Quick sections", "Context-aware suggestions"],
+          },
+          {
+            title: "Custom Drafting",
+            desc: "Upload your format/template and generate in your structure.",
+            video: "",
+            points: ["Template-first drafting", "Format retention", "Consistent styling"],
+          },
+          {
+            title: "Train Your Drafts",
+            desc: "Teach Chakshi your firm’s SOPs, templates, and past drafts.",
+            video: "",
+            points: ["Firm SOP training", "Reusable templates", "Style alignment"],
+          },
         ],
       },
       {
         title: "AI Chat",
         icon: MessageSquareText,
         items: [
-          { title: "CNR Chatbot", desc: "Case status lookup using CNR number.", img: cNRImg },
-          { title: "DocuChat", desc: "Upload documents, generate timelines.", img: docuchatImg },
-          { title: "Nyaya AI", desc: "Expert legal assistant trained on trusted sources.", img: nyayaWelcomeImg },
+          {
+            title: "CNR Chatbot",
+            desc: "Case status lookup using a CNR number.",
+            video: "",
+            points: ["Fast lookups", "Clear status summaries", "Less manual searching"],
+          },
+          {
+            title: "DocuChat",
+            desc: "Upload documents and extract timelines, issues, and evidence.",
+            video: "",
+            points: ["Large doc support", "Issue extraction", "Evidence finder"],
+          },
+          {
+            title: "Nyaya AI",
+            desc: "Ask legal questions and get concise, citation-backed outputs.",
+            video: "",
+            points: ["Citation-backed answers", "Structured responses", "Trusted sources"],
+          },
         ],
       },
       {
         title: "Research",
         icon: Search,
         items: [
-          { title: "AI Research Assistant", desc: "Authoritative Indian case-law and statutory research.", img: researchAdvancedImg },
-          { title: "Legal Memo Generator", desc: "IRAC, CRAC, and CREAC memos from case facts.", img: draftModalImg },
-          { title: "Compliance Checklist", desc: "Industry-specific checklists with references.", img: complianceImg },
-          { title: "Saved Notes", desc: "Manage and reuse important findings.", img: researchAdvancedImg },
+          {
+            title: "AI Research Assistant",
+            desc: "Advanced research with citations, timelines, and conflict detection.",
+            video: "",
+            points: ["Citations & references", "Chronological timeline", "Conflict detection"],
+          },
+          {
+            title: "Legal Memo Generator",
+            desc: "Generate IRAC/CRAC/CREAC memos from facts and sources.",
+            video: "",
+            points: ["IRAC/CRAC formats", "Clear issue framing", "Export-ready memos"],
+          },
+          {
+            title: "Compliance Checklist",
+            desc: "Live-verified compliance tasks with evidence and notes.",
+            video: "",
+            points: ["Risk tagging", "Notes & proof", "Saved checklists"],
+          },
+          {
+            title: "Saved Notes",
+            desc: "Save findings and reuse them across drafts and research.",
+            video: "",
+            points: ["Reusable notes", "Quick retrieval", "Cross-workflow continuity"],
+          },
         ],
       },
     ],
@@ -701,15 +756,16 @@ function AiHub() {
       id="ai-hub"
       kicker="All features, one hub"
       title="Inside Chakshi AI Hub"
-      description="Browse the modules the way users experience them: categories, tools, and real screens." 
+      description="Browse the modules the way users experience them: categories, tools, and real screens."
     >
       <div className="rounded-[30px] border bg-white/55 p-2 shadow-sm backdrop-blur">
-        <div className="grid gap-2 lg:grid-cols-[280px,1fr]">
-          <div className="rounded-[26px] border bg-white/70 p-3">
-            <div className="mb-2 px-2 pt-1 text-xs font-semibold text-[hsl(var(--foreground))]/70" data-testid="text-hub-nav-title">
-              Modules
-            </div>
-            <div className="space-y-1">
+        <div className="rounded-[26px] border bg-white px-4 py-4 md:px-6 md:py-5">
+          <div className="text-xs font-semibold text-[hsl(var(--foreground))]/70" data-testid="text-hub-tabs-title">
+            Modules
+          </div>
+
+          <div className="mt-3 overflow-x-auto">
+            <div className="flex w-max items-center gap-2" data-testid="row-hub-tabs">
               {groups.map((grp, idx) => {
                 const selected = idx === g;
                 const Icon = grp.icon;
@@ -717,123 +773,134 @@ function AiHub() {
                   <button
                     key={grp.title}
                     className={cn(
-                      "flex w-full items-center justify-between gap-3 rounded-2xl border border-transparent px-3 py-2.5 text-left transition",
-                      selected ? "bg-white shadow-sm [border-color:rgba(0,0,0,0.06)]" : "hover:bg-white/70",
+                      "group inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-semibold transition",
+                      selected
+                        ? "bg-white shadow-sm border-[hsl(var(--primary))]/25"
+                        : "bg-white/60 border-black/10 hover:bg-white",
                     )}
                     onClick={() => {
                       setG(idx);
                       setI(0);
                     }}
-                    data-testid={`button-hub-group-${idx}`}
+                    data-testid={`tab-hub-module-${idx}`}
                     type="button"
                   >
-                    <span className="flex items-center gap-3">
-                      <span
-                        className={cn(
-                          "grid h-9 w-9 place-items-center rounded-xl border bg-[hsl(var(--background))]",
-                          selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
-                        )}
-                      >
-                        <Icon className={cn("h-4.5 w-4.5", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--foreground))]/75")} />
-                      </span>
-                      <span className="text-sm font-semibold" data-testid={`text-hub-group-title-${idx}`}>{grp.title}</span>
+                    <span
+                      className={cn(
+                        "grid h-7 w-7 place-items-center rounded-full border bg-[hsl(var(--background))]",
+                        selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
+                      )}
+                    >
+                      <Icon className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--foreground))]/70")} />
                     </span>
-                    <ChevronRight className={cn("h-4 w-4 transition", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--muted-foreground))]")} />
+                    <span data-testid={`text-hub-tab-title-${idx}`}>{grp.title}</span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          <div className="rounded-[26px] border bg-white p-4 md:p-6">
-            <div className="grid gap-6 lg:grid-cols-[320px,1fr] lg:items-start">
-              <div>
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <div className="text-sm font-semibold" data-testid="text-hub-active-group">{activeGroup.title}</div>
-                    <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-active-group-sub">
-                      Choose a tool to preview
-                    </div>
+          <div className="mt-5 grid gap-6 lg:grid-cols-[340px,1fr] lg:items-start">
+            <div>
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <div className="text-sm font-semibold" data-testid="text-hub-active-group">{activeGroup.title}</div>
+                  <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-active-group-sub">
+                    Choose a tool to preview
                   </div>
-                  <Badge className="rounded-full" data-testid="badge-hub">AI Hub</Badge>
                 </div>
-
-                <div className="mt-4 space-y-2">
-                  {activeGroup.items.map((it, idx) => {
-                    const selected = idx === i;
-                    return (
-                      <button
-                        key={it.title}
-                        className={cn(
-                          "group w-full rounded-2xl border bg-white/60 px-4 py-3 text-left shadow-sm transition hover:bg-white",
-                          selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
-                        )}
-                        onClick={() => setI(idx)}
-                        data-testid={`button-hub-item-${idx}`}
-                        type="button"
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <div className="text-sm font-semibold" data-testid={`text-hub-item-title-${idx}`}>{it.title}</div>
-                            <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-hub-item-desc-${idx}`}>{it.desc}</div>
-                          </div>
-                          <span className={cn("mt-0.5 grid h-7 w-7 place-items-center rounded-full border bg-white transition", selected ? "border-[hsl(var(--primary))]/25" : "border-black/10")}>
-                            <ChevronRight className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--muted-foreground))]")} />
-                          </span>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
+                <Badge className="rounded-full" data-testid="badge-hub">
+                  AI Hub
+                </Badge>
               </div>
 
-              <div className="relative">
-                <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3">
-                  <div className="rounded-[18px] border bg-white shadow-sm">
-                    <div className="flex items-center justify-between gap-2 border-b px-4 py-3">
-                      <div className="text-sm font-semibold" data-testid="text-hub-preview-title">{activeItem.title}</div>
-                      <Badge variant="secondary" className="rounded-full bg-white" data-testid="badge-hub-preview">
-                        Preview
-                      </Badge>
-                    </div>
-                    <div className="p-3 md:p-4">
-                      <AnimatePresence mode="wait">
-                        <motion.img
+              <div className="mt-4 space-y-2" data-testid="list-hub-tools">
+                {activeGroup.items.map((it, idx) => {
+                  const selected = idx === i;
+                  return (
+                    <button
+                      key={it.title}
+                      className={cn(
+                        "group w-full rounded-2xl border bg-white/60 px-4 py-3 text-left shadow-sm transition hover:bg-white",
+                        selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
+                      )}
+                      onClick={() => setI(idx)}
+                      data-testid={`button-hub-item-${idx}`}
+                      type="button"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <div className="text-sm font-semibold" data-testid={`text-hub-item-title-${idx}`}>{it.title}</div>
+                          <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-hub-item-desc-${idx}`}>{it.desc}</div>
+                        </div>
+                        <span className={cn(
+                          "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border bg-white transition",
+                          selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
+                        )}>
+                          <ChevronRight className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--muted-foreground))]")} />
+                        </span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="relative" data-testid="panel-hub-preview">
+              <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3">
+                <div className="rounded-[18px] border bg-white shadow-sm">
+                  <div className="flex items-center justify-between gap-2 border-b px-4 py-3">
+                    <div className="text-sm font-semibold" data-testid="text-hub-preview-title">{activeItem.title}</div>
+                    <Badge variant="secondary" className="rounded-full bg-white" data-testid="badge-hub-preview">
+                      Video preview
+                    </Badge>
+                  </div>
+
+                  <div className="p-3 md:p-4">
+                    <div className="relative overflow-hidden rounded-2xl border bg-[hsl(var(--card))]/60" data-testid="video-hub-container">
+                      {activeItem.video ? (
+                        <motion.video
                           key={activeItem.title}
-                          src={activeItem.img}
-                          alt={activeItem.title}
-                          className="w-full rounded-2xl border"
-                          data-testid="img-hub-preview"
+                          src={activeItem.video}
+                          className="block w-full"
+                          controls
+                          playsInline
+                          preload="metadata"
+                          data-testid="video-hub-preview"
                           initial={{ opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -8 }}
                           transition={{ duration: 0.25 }}
                         />
-                      </AnimatePresence>
+                      ) : (
+                        <div className="grid aspect-video w-full place-items-center bg-white/60" data-testid="placeholder-hub-video">
+                          <div className="text-center">
+                            <div className="text-sm font-semibold" data-testid="text-hub-placeholder-title">Add a video for this feature</div>
+                            <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-placeholder-sub">
+                              Upload an .mp4 and we’ll wire it in.
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-4 rounded-2xl border bg-white/60 p-4" data-testid="panel-hub-points">
+                      <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-hub-points-title">
+                        <Check className="h-4 w-4 text-[hsl(var(--primary))]" />
+                        Key highlights
+                      </div>
+                      <ul className="mt-3 space-y-2">
+                        {(activeItem.points ?? []).map((p: string, idx: number) => (
+                          <li key={p} className="flex items-start gap-2" data-testid={`row-hub-point-${idx}`}>
+                            <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-[hsl(var(--primary))]/12">
+                              <Check className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
+                            </span>
+                            <span className="text-sm text-[hsl(var(--foreground))]/85" data-testid={`text-hub-point-${idx}`}>{p}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                </div>
-
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {[
-                    { icon: Search, title: "Citations", desc: "Reference-first answers." },
-                    { icon: ShieldCheck, title: "Controls", desc: "Structured, explainable outputs." },
-                    { icon: FileText, title: "Drafting", desc: "From facts to final." },
-                    { icon: MessageSquareText, title: "Chat", desc: "Docs, cases, and notes." },
-                  ].map((t, idx) => {
-                    const Icon = t.icon;
-                    return (
-                      <div key={t.title} className="rounded-2xl border bg-white/60 p-4 shadow-sm" data-testid={`card-hub-benefit-${idx}`}>
-                        <div className="flex items-center gap-2 text-sm font-semibold" data-testid={`text-hub-benefit-title-${idx}`}>
-                          <Icon className="h-4 w-4 text-[hsl(var(--primary))]" />
-                          {t.title}
-                        </div>
-                        <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-hub-benefit-desc-${idx}`}>
-                          {t.desc}
-                        </div>
-                      </div>
-                    );
-                  })}
                 </div>
               </div>
             </div>
