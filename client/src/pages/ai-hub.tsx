@@ -461,7 +461,7 @@ function Highlights() {
       description="Advanced features designed for modern legal teams—built into the workspace, not bolted on."
     >
       <div className="rounded-[30px] border bg-white/55 p-2 shadow-sm backdrop-blur">
-        <div className="grid gap-0 rounded-[26px] border bg-white p-2 [@media(min-width:960px)]:grid-cols-[1.25fr,0.75fr]">
+        <div className="grid gap-0 rounded-[26px] border bg-white p-2 [@media(min-width:720px)]:grid-cols-[1.25fr,0.75fr]">
           <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3" data-testid="panel-highlights-video">
             <div className="rounded-[18px] border bg-white shadow-sm overflow-hidden">
               <div className="flex items-start justify-between gap-3 border-b px-4 py-3">
