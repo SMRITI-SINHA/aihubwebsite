@@ -16,6 +16,8 @@ import {
   ShieldCheck,
   Sparkles,
   Wand2,
+  X,
+  CheckCircle2,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -734,27 +736,31 @@ function AiHub() {
 
 function Comparison() {
   const rows = [
-    { label: "Time spent on repetitive tasks", a: "Hours per week", b: "Minutes per week" },
-    { label: "CNR case status checks", a: "Manual portal checks", b: "CNR chatbot in seconds" },
-    { label: "Draft turnaround time", a: "Manual drafting + revisions", b: "Guided drafting flow" },
-    { label: "Response speed to legal questions", a: "Minutes to days", b: "Instant" },
-    { label: "Source quality", a: "Mixed / irrelevant sources", b: "Trusted sources only" },
-    { label: "Citations & references", a: "Manual hunting", b: "Built-in" },
-    { label: "Compliance tracking", a: "Spreadsheets", b: "Live checklists" },
+    { label: "Does legal drafting for you", a: "Does not do Legal Drafting", b: "Does Legal Drafting for you" },
+    { label: "Drafting from uploaded PDFs/Word", a: "Does not do Legal Drafting based on uploaded pdf/word", b: "Does Legal Drafting based on uploaded pdf/word" },
+    { label: "Automatic legal research", a: "Does not do automatic Legal Research", b: "Does accurate automatic Legal Research" },
+    { label: "Legal research inside the app", a: "Does not allow you to do Legal Research", b: "Allows you to do Legal Research" },
+    { label: "Read a case within app", a: "Does not allow you to read cases", b: "Allows you to read cases inside app" },
+    { label: "Generate arguments", a: "Does not allow you to generate arguments", b: "Allows you to generate arguments" },
+    { label: "Generate summaries", a: "Does not allow you to generate summaries", b: "Allows you to generate summaries" },
+    { label: "Prepare case notes", a: "Does not allow you to prepare case notes", b: "Allows you to prepare case notes" },
+    { label: "Extract dates from PDFs", a: "Does not allow you to prepare list of dates from a pdf automatically", b: "Allows you to prepare list of dates from a pdf automatically" },
+    { label: "Expert legal memos", a: "Does not prepare expert legal memos for you", b: "Prepares expert legal memos for you" },
   ];
 
   return (
-    <section className="py-14 md:py-20">
+    <section className="py-14 md:py-20" data-testid="section-comparison">
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
-        <div className="relative overflow-hidden rounded-[34px] border bg-[radial-gradient(1200px_500px_at_50%_-10%,rgba(31,40,57,0.55),transparent)] p-8 text-white shadow-[0_30px_90px_-60px_rgba(0,0,0,0.9)] md:p-10">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.22]" style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.16) 1px, transparent 0)",
-            backgroundSize: "22px 22px",
-          }} />
+        <div className="relative overflow-hidden rounded-[34px] border bg-[radial-gradient(1200px_520px_at_50%_-12%,rgba(31,40,57,0.62),transparent)] p-8 text-white shadow-[0_30px_90px_-60px_rgba(0,0,0,0.9)] md:p-10">
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.16]"
+            style={{ backgroundImage: "url(/images/noise-cream.jpg)", backgroundSize: "520px 520px" }}
+          />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(180deg,rgba(0,0,0,0.35),transparent)]" />
+
           <div className="relative">
             <div
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium"
               data-testid="badge-compare"
             >
               <Sparkles className="h-3.5 w-3.5" />
@@ -763,50 +769,59 @@ function Comparison() {
             <h2 className="mt-4 text-balance text-3xl font-[750] tracking-[-0.03em] md:text-5xl" data-testid="text-compare-title">
               Your competitors are already using AI for a reason
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/75 md:text-base" data-testid="text-compare-sub">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/80 md:text-base" data-testid="text-compare-sub">
               Chakshi AI Hub reduces repetitive work and keeps knowledge structured, searchable, and ready to cite.
             </p>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              <div className="rounded-3xl border border-white/10 bg-white/5">
+            <div className="mt-8 grid gap-4 md:grid-cols-2" data-testid="grid-compare">
+              <div className="rounded-3xl border border-white/15 bg-white/10 backdrop-blur" data-testid="card-compare-without">
                 <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
                   <div className="text-sm font-semibold" data-testid="text-compare-left-title">Without Chakshi</div>
-                  <span className="text-xs text-white/60" data-testid="text-compare-left-sub">Traditional workflow</span>
+                  <span className="text-xs text-white/65" data-testid="text-compare-left-sub">Traditional workflow</span>
                 </div>
                 <div className="divide-y divide-white/10">
                   {rows.map((r, idx) => (
-                    <div key={r.label} className="px-5 py-4" data-testid={`row-compare-left-${idx}`}>
-                      <div className="text-xs text-white/65">{r.label}</div>
-                      <div className="mt-2 text-sm font-semibold">{r.a}</div>
+                    <div key={r.label} className="grid grid-cols-[16px,1fr] gap-3 px-5 py-4" data-testid={`row-compare-left-${idx}`}>
+                      <X className="mt-0.5 h-4 w-4 text-red-400" />
+                      <div className="min-w-0">
+                        <div className="text-xs text-white/70" data-testid={`text-compare-left-label-${idx}`}>{r.label}</div>
+                        <div className="mt-2 text-sm font-semibold text-white" data-testid={`text-compare-left-value-${idx}`}>{r.a}</div>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-[hsl(var(--primary))]/35 bg-[linear-gradient(180deg,rgba(182,157,116,0.18),rgba(255,255,255,0.02))]">
+              <div
+                className="rounded-3xl border border-[hsl(var(--primary))]/45 bg-[linear-gradient(180deg,rgba(182,157,116,0.22),rgba(255,255,255,0.04))] backdrop-blur"
+                data-testid="card-compare-with"
+              >
                 <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
                   <div className="text-sm font-semibold" data-testid="text-compare-right-title">With Chakshi AI Hub</div>
                   <Badge className="rounded-full" data-testid="badge-compare-right">Recommended</Badge>
                 </div>
                 <div className="divide-y divide-white/10">
                   {rows.map((r, idx) => (
-                    <div key={r.label} className="px-5 py-4" data-testid={`row-compare-right-${idx}`}>
-                      <div className="text-xs text-white/70">{r.label}</div>
-                      <div className="mt-2 text-sm font-semibold">{r.b}</div>
+                    <div key={r.label} className="grid grid-cols-[16px,1fr] gap-3 px-5 py-4" data-testid={`row-compare-right-${idx}`}>
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-300" />
+                      <div className="min-w-0">
+                        <div className="text-xs text-white/75" data-testid={`text-compare-right-label-${idx}`}>{r.label}</div>
+                        <div className="mt-2 text-sm font-semibold text-white" data-testid={`text-compare-right-value-${idx}`}>{r.b}</div>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3" data-testid="row-compare-cta-buttons">
               <Button className="rounded-full" data-testid="button-compare-primary" type="button">
                 Explore AI Hub
                 <ArrowRight className="h-4 w-4" />
               </Button>
               <Button
                 variant="outline"
-                className="rounded-full border-white/20 bg-white/5 text-white hover:bg-white/10"
+                className="rounded-full border-white/25 bg-white/10 text-white hover:bg-white/15"
                 data-testid="button-compare-secondary"
                 type="button"
               >
