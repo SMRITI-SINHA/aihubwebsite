@@ -809,7 +809,7 @@ function AiHub() {
             </div>
           </div>
 
-          <div className="mt-5 grid gap-6 md:grid-cols-[340px,1fr] md:items-start">
+          <div className="mt-5 grid gap-6 [@media(min-width:900px)]:grid-cols-[340px,1fr] [@media(min-width:900px)]:items-start">
             <div>
               <div className="flex items-center justify-between gap-3">
                 <div>
@@ -910,24 +910,6 @@ function AiHub() {
                               </li>
                             ))}
                           </ul>
-                        </div>
-                      </div>
-
-                      <div className="rounded-2xl border bg-[hsl(var(--card))]/60 p-4" data-testid="panel-hub-side">
-                        <div className="text-xs font-semibold text-[hsl(var(--foreground))]/70" data-testid="text-hub-side-title">
-                          At a glance
-                        </div>
-                        <div className="mt-2 text-sm font-semibold" data-testid="text-hub-side-feature">{activeItem.title}</div>
-                        <div className="mt-1 text-xs leading-relaxed text-[hsl(var(--muted-foreground))]" data-testid="text-hub-side-desc">
-                          {activeItem.desc}
-                        </div>
-                        <div className="mt-4 grid gap-2" data-testid="list-hub-side-tags">
-                          {(activeItem.points ?? []).slice(0, 3).map((p: string, idx: number) => (
-                            <div key={p} className="flex items-center gap-2 rounded-xl border bg-white/60 px-3 py-2" data-testid={`row-hub-side-tag-${idx}`}>
-                              <span className="h-2 w-2 rounded-full bg-[hsl(var(--primary))]" />
-                              <span className="text-xs text-[hsl(var(--foreground))]/80" data-testid={`text-hub-side-tag-${idx}`}>{p}</span>
-                            </div>
-                          ))}
                         </div>
                       </div>
                     </div>
