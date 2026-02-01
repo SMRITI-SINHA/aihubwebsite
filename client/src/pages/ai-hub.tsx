@@ -809,7 +809,7 @@ function AiHub() {
             </div>
           </div>
 
-          <div className="mt-5 grid gap-6 lg:grid-cols-[340px,1fr] lg:items-start">
+          <div className="mt-5 grid gap-6 md:grid-cols-[340px,1fr] md:items-start">
             <div>
               <div className="flex items-center justify-between gap-3">
                 <div>
