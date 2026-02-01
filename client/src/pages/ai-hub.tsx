@@ -343,182 +343,64 @@ function Hero() {
   );
 }
 
-function Capabilities() {
-  const items = [
-    {
-      icon: Wand2,
-      title: "AI Legal Drafting",
-      desc: "Draft with an integrated research panel and structured prompts.",
-      img: editorResearchImg,
-      pill: "Drafting",
-      bullets: ["Draft from facts", "Upload reference documents", "Use trained firm style"],
-    },
-    {
-      icon: MessageSquareText,
-      title: "DocuChat",
-      desc: "Upload large documents and extract timelines, issues, and evidence.",
-      img: docuchatImg,
-      pill: "AI Chat",
-      bullets: ["800+ pages support", "Issue tagging", "Evidence finder"],
-    },
-    {
-      icon: Scale,
-      title: "Nyaya AI",
-      desc: "Ask legal questions and get concise, citation-backed outputs.",
-      img: nyayaWelcomeImg,
-      pill: "AI Chat",
-      bullets: ["Trusted sources", "Sample prompts", "Structured answers"],
-    },
-    {
-      icon: Search,
-      title: "AI Legal Research",
-      desc: "Advanced mode with extracted paragraphs, timelines, and conflict detection.",
-      img: researchAdvancedImg,
-      pill: "Research",
-      bullets: ["Tags & references", "Chronological timeline", "Conflict detection"],
-    },
-    {
-      icon: Layers,
-      title: "Smart Compliance Checklists",
-      desc: "Generate live-verified compliance tasks with evidence and notes.",
-      img: complianceImg,
-      pill: "Compliance",
-      bullets: ["Risk tagging", "Notes & proof", "Saved checklists"],
-    },
-    {
-      icon: Files,
-      title: "Train Your Drafts",
-      desc: "Teach Chakshi your firm’s SOPs, templates, and past drafts.",
-      img: trainDraftsImg,
-      pill: "Personalization",
-      bullets: ["Drag & drop uploads", "Up to 10 docs", "Applies automatically"],
-    },
+function Proof() {
+  const stats = [
+    { label: "Trusted sources only", value: "Less noise", icon: ShieldCheck },
+    { label: "CNR status lookup", value: "Seconds", icon: Search },
+    { label: "Document-first work", value: "Upload & extract", icon: Files },
+    { label: "Drafting outputs", value: "Structured", icon: FileText },
   ];
-
-  const [active, setActive] = useState(0);
 
   return (
     <Section
-      id="capabilities"
-      kicker="Designed for modern legal teams"
-      title="The AI Hub capabilities"
-      description="Not a bundle of features—one coherent workflow. Explore what’s inside the Chakshi AI Hub." 
+      id="proof"
+      kicker="Built for high-stakes work"
+      title="Less switching. More certainty."
+      description="Chakshi AI Hub keeps research, drafting, and case lookups in one place—so teams move faster with less noise."
     >
-      <div className="grid gap-8 lg:grid-cols-[340px,1fr]">
-        <div className="relative">
-          <div className="sticky top-24">
-            <div className="rounded-[22px] border bg-white/60 p-2 shadow-sm backdrop-blur">
-              {items.map((it, idx) => {
-                const Icon = it.icon;
-                const selected = idx === active;
-                return (
-                  <button
-                    key={it.title}
-                    className={cn(
-                      "group flex w-full items-start gap-3 rounded-[18px] border border-transparent px-3 py-3 text-left transition",
-                      selected
-                        ? "bg-white shadow-sm [border-color:rgba(0,0,0,0.06)]"
-                        : "hover:bg-white/70",
-                    )}
-                    onClick={() => setActive(idx)}
-                    data-testid={`button-capability-${idx}`}
-                    type="button"
-                  >
-                    <span
-                      className={cn(
-                        "mt-0.5 grid h-9 w-9 place-items-center rounded-xl border bg-[hsl(var(--background))]",
-                        selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
-                      )}
-                    >
-                      <Icon className={cn("h-4.5 w-4.5", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--foreground))]/75")} />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="flex items-center justify-between gap-2">
-                        <span className="truncate text-sm font-semibold" data-testid={`text-capability-title-${idx}`}>
-                          {it.title}
-                        </span>
-                        <Badge
-                          variant="secondary"
-                          className={cn(
-                            "rounded-full bg-white text-[hsl(var(--foreground))]/70",
-                            selected ? "border border-[hsl(var(--primary))]/20" : "border border-black/5",
-                          )}
-                          data-testid={`badge-capability-pill-${idx}`}
-                        >
-                          {it.pill}
-                        </Badge>
-                      </span>
-                      <span className="mt-1 block text-xs leading-relaxed text-[hsl(var(--muted-foreground))]" data-testid={`text-capability-desc-${idx}`}>
-                        {it.desc}
-                      </span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="mt-4 rounded-[22px] border bg-[hsl(var(--card))]/60 p-5 shadow-sm">
-              <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-capability-note-title">
-                <ShieldCheck className="h-4 w-4 text-[hsl(var(--primary))]" />
-                Built for clarity
+      <div className="rounded-[30px] border bg-white/55 p-2 shadow-sm backdrop-blur">
+        <div
+          className="relative overflow-hidden rounded-[26px] border bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.70))] p-6 md:p-8"
+          data-testid="card-proof"
+        >
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.14]"
+            style={{ backgroundImage: "url(/images/noise-cream.jpg)", backgroundSize: "520px 520px" }}
+          />
+          <div className="relative grid gap-6 md:grid-cols-[1.2fr,0.8fr] md:items-center">
+            <div>
+              <div className="text-sm font-semibold" data-testid="text-proof-title">
+                What changes for your team
               </div>
-              <div className="mt-2 text-sm text-[hsl(var(--muted-foreground))]" data-testid="text-capability-note">
-                Each module is designed to be explainable, structured, and easy to cite—so output is usable in real legal workflows.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="relative">
-          <div className="rounded-[28px] border bg-white shadow-[0_20px_60px_-36px_rgba(31,40,57,0.55)]">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
-              <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-capability-preview-title">
-                <span className="h-2 w-2 rounded-full bg-[hsl(var(--primary))]" />
-                Live UI preview
-              </div>
-              <div className="flex items-center gap-2">
-                <Badge className="rounded-full" data-testid="badge-capability-status">
-                  AI Hub
-                </Badge>
-                <span className="text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-capability-status">
-                  Real screens
-                </span>
-              </div>
-            </div>
-
-            <div className="p-4 md:p-6">
-              <div className="relative overflow-hidden rounded-[22px] border bg-[hsl(var(--background))]">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={items[active].title}
-                    src={items[active].img}
-                    alt={items[active].title}
-                    className="block w-full"
-                    data-testid="img-capability"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.25 }}
-                  />
-                </AnimatePresence>
-              </div>
-
-              <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                {items[active].bullets.map((b, i) => (
-                  <div
-                    key={b}
-                    className="rounded-2xl border bg-white/60 p-4 shadow-sm"
-                    data-testid={`card-capability-bullet-${i}`}
-                  >
-                    <div className="flex items-start gap-2 text-sm font-semibold">
-                      <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-[hsl(var(--primary))]/12">
-                        <Check className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
-                      </span>
-                      <span className="text-pretty">{b}</span>
-                    </div>
-                  </div>
+              <p className="mt-2 text-sm leading-relaxed text-[hsl(var(--muted-foreground))]" data-testid="text-proof-sub">
+                Fewer tabs, fewer copy-pastes, and fewer dead-ends. Each module is designed to be explainable, structured, and easy to cite.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2" data-testid="row-proof-badges">
+                {["Trusted sources", "Citations", "CNR", "Document chat", "Compliance"].map((t) => (
+                  <Badge key={t} variant="secondary" className="rounded-full bg-white" data-testid={`badge-proof-${t.toLowerCase().replaceAll(" ", "-")}`}>
+                    {t}
+                  </Badge>
                 ))}
               </div>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2" data-testid="grid-proof-stats">
+              {stats.map((s, idx) => {
+                const Icon = s.icon;
+                return (
+                  <div key={s.label} className="rounded-2xl border bg-white/70 p-4 shadow-sm" data-testid={`card-proof-stat-${idx}`}>
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <div className="text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-proof-stat-label-${idx}`}>{s.label}</div>
+                        <div className="mt-1 text-sm font-semibold" data-testid={`text-proof-stat-value-${idx}`}>{s.value}</div>
+                      </div>
+                      <span className="grid h-9 w-9 place-items-center rounded-xl border bg-[hsl(var(--background))]">
+                        <Icon className="h-4 w-4 text-[hsl(var(--primary))]" />
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -527,128 +409,58 @@ function Capabilities() {
   );
 }
 
-function HowItWorks() {
-  const steps = [
+function Outcomes() {
+  const tiles = [
     {
-      title: "Bring your inputs",
-      desc: "Upload reference docs, paste facts, or start from a blank document.",
-      icon: Files,
-      img: draftModalImg,
-    },
-    {
-      title: "Draft with AI assistance",
-      desc: "Generate drafts with structure, clarity, and research support.",
-      icon: FileText,
-      img: editorResearchImg,
-    },
-    {
-      title: "Research + validate",
-      desc: "Use advanced legal research with citations, timelines, and contradictions.",
+      title: "CNR in seconds",
+      desc: "Pull case status quickly without jumping between portals.",
       icon: Search,
-      img: researchAdvancedImg,
+    },
+    {
+      title: "Trusted sources only",
+      desc: "Reduce noise and focus on reference-first results.",
+      icon: ShieldCheck,
+    },
+    {
+      title: "Document-heavy work, simplified",
+      desc: "Upload, chat, extract timelines, issues, and evidence.",
+      icon: Files,
+    },
+    {
+      title: "Drafting that stays structured",
+      desc: "From facts to export-ready drafts with guided prompts.",
+      icon: FileText,
     },
   ];
 
-  const [active, setActive] = useState(0);
-
   return (
     <Section
-      id="how-it-works"
-      kicker="Practical, not theoretical"
-      title="How the AI Hub works"
-      description="A clean flow that mirrors how lawyers actually work—inputs, drafting, and verification." 
+      id="outcomes"
+      kicker="Designed to compound"
+      title="Outcomes you can feel in week one"
+      description="Not a checklist of features—measurable speed, better source quality, and cleaner workflows."
     >
-      <div className="grid gap-8 lg:grid-cols-[1fr,420px] lg:items-start">
-        <div className="rounded-[28px] border bg-white shadow-[0_20px_60px_-36px_rgba(31,40,57,0.55)]">
-          <div className="border-b px-4 py-3">
-            <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-how-preview-title">
-              <span className="h-2 w-2 rounded-full bg-[hsl(var(--primary))]" />
-              Flow preview
-            </div>
-          </div>
-          <div className="p-4 md:p-6">
-            <div className="relative overflow-hidden rounded-[22px] border">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={steps[active].title}
-                  src={steps[active].img}
-                  alt={steps[active].title}
-                  className="block w-full"
-                  data-testid="img-how-preview"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.25 }}
-                />
-              </AnimatePresence>
-            </div>
-
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              {steps.map((s, i) => {
-                const selected = i === active;
-                const Icon = s.icon;
-                return (
-                  <button
-                    key={s.title}
-                    className={cn(
-                      "rounded-2xl border bg-white/60 p-4 text-left shadow-sm transition hover:bg-white",
-                      selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
-                    )}
-                    onClick={() => setActive(i)}
-                    data-testid={`button-how-step-${i}`}
-                    type="button"
-                  >
-                    <div className="flex items-center gap-2 text-sm font-semibold" data-testid={`text-how-step-title-${i}`}>
-                      <Icon className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--foreground))]/75")} />
-                      Step {i + 1}
-                    </div>
-                    <div className="mt-2 text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-how-step-desc-${i}`}>
-                      {s.title}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-[28px] border bg-[hsl(var(--card))]/60 p-6 shadow-sm">
-          <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-how-right-title">
-            <BookOpen className="h-4 w-4 text-[hsl(var(--primary))]" />
-            What you get
-          </div>
-
-          <ul className="mt-4 space-y-3">
-            {[
-              "Structured outputs you can directly use in practice",
-              "Citations and sources surfaced alongside answers",
-              "Saved notes across research and drafting",
-              "A workspace that scales from solo to teams",
-            ].map((t, idx) => (
-              <li key={t} className="flex items-start gap-2" data-testid={`row-how-benefit-${idx}`}>
-                <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-[hsl(var(--primary))]/12">
-                  <Check className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
-                </span>
-                <span className="text-sm text-[hsl(var(--foreground))]/85">{t}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-6 rounded-2xl border bg-white/60 p-4">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <div className="text-sm font-semibold" data-testid="text-how-cta-title">Start with AI Hub</div>
-                <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-how-cta-sub">
-                  Explore modules and workflows.
+      <div className="grid gap-4 md:grid-cols-2" data-testid="grid-outcomes">
+        {tiles.map((t, idx) => {
+          const Icon = t.icon;
+          return (
+            <div
+              key={t.title}
+              className="group rounded-[28px] border bg-white/60 p-6 shadow-sm backdrop-blur transition hover:bg-white"
+              data-testid={`card-outcome-${idx}`}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="text-sm font-semibold" data-testid={`text-outcome-title-${idx}`}>{t.title}</div>
+                  <div className="mt-2 text-sm text-[hsl(var(--muted-foreground))]" data-testid={`text-outcome-desc-${idx}`}>{t.desc}</div>
                 </div>
+                <span className="grid h-10 w-10 place-items-center rounded-2xl border bg-[hsl(var(--background))]">
+                  <Icon className="h-5 w-5 text-[hsl(var(--primary))]" />
+                </span>
               </div>
-              <Button className="rounded-full" data-testid="button-how-cta" type="button">
-                Get started
-                <ArrowRight className="h-4 w-4" />
-              </Button>
             </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </Section>
   );
@@ -664,25 +476,25 @@ function AiHub() {
           {
             title: "AI Legal Drafting",
             desc: "Draft with an integrated research panel and structured prompts.",
-            video: "",
+            video: "/videos/Upload ref docs demo final - Made with Clipchamp.mp4",
             points: ["Integrated research panel", "Structured prompts", "Clean export-ready drafting"],
           },
           {
             title: "Empty Document",
             desc: "Start from a blank doc and build with AI assistance.",
-            video: "",
+            video: "/videos/empty doc+ ai assis demo final - Made with Clipchamp.mp4",
             points: ["Blank doc to draft", "Quick sections", "Context-aware suggestions"],
           },
           {
             title: "Custom Drafting",
             desc: "Upload your format/template and generate in your structure.",
-            video: "",
+            video: "/videos/Upload ref docs demo final - Made with Clipchamp.mp4",
             points: ["Template-first drafting", "Format retention", "Consistent styling"],
           },
           {
             title: "Train Your Drafts",
             desc: "Teach Chakshi your firm’s SOPs, templates, and past drafts.",
-            video: "",
+            video: "/videos/Train your drafts demo final - Made with Clipchamp.mp4",
             points: ["Firm SOP training", "Reusable templates", "Style alignment"],
           },
         ],
@@ -694,20 +506,20 @@ function AiHub() {
           {
             title: "CNR Chatbot",
             desc: "Case status lookup using a CNR number.",
-            video: "",
-            points: ["Fast lookups", "Clear status summaries", "Less manual searching"],
+            video: "/videos/cnr demo final - Made with Clipchamp.mp4",
+            points: ["CNR-based case lookup", "Fast status summaries", "Less manual searching"],
           },
           {
             title: "DocuChat",
             desc: "Upload documents and extract timelines, issues, and evidence.",
-            video: "",
+            video: "/videos/Docuchat demo final - Made with Clipchamp.mp4",
             points: ["Large doc support", "Issue extraction", "Evidence finder"],
           },
           {
             title: "Nyaya AI",
             desc: "Ask legal questions and get concise, citation-backed outputs.",
-            video: "",
-            points: ["Citation-backed answers", "Structured responses", "Trusted sources"],
+            video: "/videos/Nyaya ai demo final - Made with Clipchamp.mp4",
+            points: ["Trusted sources", "Citation-backed answers", "Structured outputs"],
           },
         ],
       },
@@ -718,26 +530,20 @@ function AiHub() {
           {
             title: "AI Research Assistant",
             desc: "Advanced research with citations, timelines, and conflict detection.",
-            video: "",
-            points: ["Citations & references", "Chronological timeline", "Conflict detection"],
+            video: "/videos/Research demo final - Made with Clipchamp.mp4",
+            points: ["Trusted sources only", "Citations & references", "Conflict detection"],
           },
           {
             title: "Legal Memo Generator",
             desc: "Generate IRAC/CRAC/CREAC memos from facts and sources.",
-            video: "",
+            video: "/videos/Legal Memo demo final - Made with Clipchamp.mp4",
             points: ["IRAC/CRAC formats", "Clear issue framing", "Export-ready memos"],
           },
           {
             title: "Compliance Checklist",
             desc: "Live-verified compliance tasks with evidence and notes.",
-            video: "",
-            points: ["Risk tagging", "Notes & proof", "Saved checklists"],
-          },
-          {
-            title: "Saved Notes",
-            desc: "Save findings and reuse them across drafts and research.",
-            video: "",
-            points: ["Reusable notes", "Quick retrieval", "Cross-workflow continuity"],
+            video: "/videos/Checklist demo final - Made with Clipchamp.mp4",
+            points: ["Live verification", "Risk tagging", "Notes & proof"],
           },
         ],
       },
@@ -865,6 +671,8 @@ function AiHub() {
                     </Badge>
                   </div>
 
+                  <div className="sr-only" data-testid="text-hub-active-video-src">{activeItem.video || ""}</div>
+
                   <div className="p-3 md:p-4">
                     <div className="grid gap-4">
                       <div>
@@ -927,9 +735,11 @@ function AiHub() {
 function Comparison() {
   const rows = [
     { label: "Time spent on repetitive tasks", a: "Hours per week", b: "Minutes per week" },
-    { label: "Response speed to research questions", a: "Minutes to days", b: "Instant" },
-    { label: "Draft iteration cycles", a: "Back-and-forth", b: "Structured outputs" },
-    { label: "Citations & sources", a: "Manual hunting", b: "Built-in" },
+    { label: "CNR case status checks", a: "Manual portal checks", b: "CNR chatbot in seconds" },
+    { label: "Draft turnaround time", a: "Manual drafting + revisions", b: "Guided drafting flow" },
+    { label: "Response speed to legal questions", a: "Minutes to days", b: "Instant" },
+    { label: "Source quality", a: "Mixed / irrelevant sources", b: "Trusted sources only" },
+    { label: "Citations & references", a: "Manual hunting", b: "Built-in" },
     { label: "Compliance tracking", a: "Spreadsheets", b: "Live checklists" },
   ];
 
@@ -951,7 +761,7 @@ function Comparison() {
               Stay ahead with AI
             </div>
             <h2 className="mt-4 text-balance text-3xl font-[750] tracking-[-0.03em] md:text-5xl" data-testid="text-compare-title">
-              Your team is already using AI for a reason
+              Your competitors are already using AI for a reason
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/75 md:text-base" data-testid="text-compare-sub">
               Chakshi AI Hub reduces repetitive work and keeps knowledge structured, searchable, and ready to cite.
@@ -1014,11 +824,15 @@ function FAQ() {
   const faqs = [
     {
       q: "What is Chakshi AI Hub?",
-      a: "Chakshi AI Hub is a complete legal AI workspace that brings drafting, chat, research, memo generation, and compliance into one place.",
+      a: "Chakshi AI Hub is a complete legal AI workspace that brings drafting, document chat, research, memo generation, CNR lookup, and compliance into one place.",
     },
     {
-      q: "Does Chakshi provide citations and trusted sources?",
-      a: "Yes. Research and assistant outputs are designed to surface sources so teams can validate and use results confidently.",
+      q: "Does Chakshi search the entire internet?",
+      a: "No. Chakshi is designed to focus on trusted sources so results are practical, reference-first, and less noisy.",
+    },
+    {
+      q: "Can I check case status with a CNR number?",
+      a: "Yes. Use the CNR chatbot to pull a case status quickly without jumping between portals.",
     },
     {
       q: "Can I train Chakshi on my firm’s drafting style?",
@@ -1026,12 +840,8 @@ function FAQ() {
     },
     {
       q: "Can we use it for document-heavy cases?",
-      a: "DocuChat supports large uploads and helps extract timelines, issues, and relevant evidence across documents.",
-    },
-    {
-      q: "Can I save notes and reuse findings?",
-      a: "Yes. Notes and saved items are designed to keep research reusable and accessible across workflows.",
-    },
+      a: "Yes. DocuChat supports large uploads and helps extract timelines, issues, and evidence across documents.",
+    }
   ];
 
   return (
@@ -1111,9 +921,9 @@ export default function AiHubLanding() {
     <div className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
       <Nav />
       <Hero />
-      <Capabilities />
-      <HowItWorks />
+      <Proof />
       <AiHub />
+      <Outcomes />
       <Comparison />
       <FAQ />
       <Footer />
