@@ -1623,36 +1623,28 @@ function NyayaChatbotSection() {
       description="Get a taste of our advanced legal AI chatbot. Ask a question and see how it provides clear, citation-backed answers."
     >
       <div className="grid gap-8 md:grid-cols-[1fr,1.5fr] md:items-start">
-        <div className="grid gap-6">
+        <div className="grid gap-8">
           <div>
-            <div className="text-xl font-semibold mb-2">Your 24/7 Legal Assistant</div>
-            <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
-              Nyaya AI is designed specifically for the Indian legal context. It understands complex legal queries, summarizes long cases, and provides accurate information based on trusted sources.
-            </p>
+            <div className="text-xl font-semibold mb-3 flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-[hsl(var(--primary))]" />
+              Core Capabilities
+            </div>
+            <div className="grid gap-3 text-[hsl(var(--muted-foreground))] leading-relaxed">
+              <p><strong className="text-[hsl(var(--foreground))]">Instant Legal Answers</strong> — Get citation-backed responses to any Indian law question in seconds.</p>
+              <p><strong className="text-[hsl(var(--foreground))]">Trained on Indian Law</strong> — Built on Indian statutes, case precedents, and live trusted legal sources.</p>
+              <p><strong className="text-[hsl(var(--foreground))]">Citation-Backed Responses</strong> — Every answer includes references to specific Acts, Sections, and case laws.</p>
+              <p><strong className="text-[hsl(var(--foreground))]">Multi-Tier AI Models</strong> — Automatically routes simple questions to fast models and complex legal analysis to advanced reasoning models.</p>
+            </div>
           </div>
-          
-          <div className="grid gap-4">
-            {[
-              { title: "General legal Q&A", desc: "Get answers to complex legal questions instantly.", icon: MessageSquareText },
-              { title: "Citation-backed answers", desc: "Every answer is backed by trusted sources.", icon: ShieldCheck },
-              { title: "Case summarization", desc: "Understand long judgments in seconds.", icon: Layers },
-              { title: "Structured outputs", desc: "Receive formatted, easy-to-read responses.", icon: Sparkles },
-            ].map((feature, idx) => {
-              const Icon = feature.icon;
-              return (
-                <div key={idx} className="flex gap-4 p-4 rounded-2xl border bg-white/80 shadow-sm transition hover:bg-white" data-testid={`card-nyaya-feature-${idx}`}>
-                  <div className="flex-shrink-0 mt-1">
-                    <span className="grid h-10 w-10 place-items-center rounded-xl border bg-[hsl(var(--background))] text-[hsl(var(--primary))]">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-[hsl(var(--foreground))]">{feature.title}</h4>
-                    <p className="text-sm text-[hsl(var(--muted-foreground))] mt-1">{feature.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
+
+          <div>
+            <div className="text-xl font-semibold mb-3 flex items-center gap-2">
+              <ShieldCheck className="h-5 w-5 text-[hsl(var(--primary))]" />
+              Research & Sources
+            </div>
+            <div className="grid gap-3 text-[hsl(var(--muted-foreground))] leading-relaxed">
+              <p><strong className="text-[hsl(var(--foreground))]">Anti-Hallucination Safeguards</strong> — Unverified citations are clearly marked; no fabricated legal references.</p>
+            </div>
           </div>
         </div>
 
