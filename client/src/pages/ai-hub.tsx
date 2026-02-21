@@ -1488,6 +1488,29 @@ function RobotModel() {
   const { scene } = useGLTF("/models/LexAI_Robot_Final.glb") as any;
   const robotRef = useRef<THREE.Group>(null);
 
+  // Fix material transparency issues on load
+  useEffect(() => {
+    if (scene) {
+      scene.traverse((child: any) => {
+        if (child.isMesh && child.material) {
+          // Clone material to avoid mutating shared ones
+          child.material = child.material.clone();
+          
+          // Force opaque rendering to fix inside-out/transparency bugs
+          child.material.transparent = false;
+          child.material.opacity = 1;
+          child.material.depthWrite = true;
+          child.material.depthTest = true;
+          
+          // Optional: ensure it renders on both sides if the geometry is single-sided
+          child.material.side = THREE.DoubleSide;
+          
+          child.material.needsUpdate = true;
+        }
+      });
+    }
+  }, [scene]);
+
   return (
     <Float 
       speed={1.5} 
