@@ -1511,39 +1511,36 @@ function RobotModel() {
       });
     }
 
-    // We will just rely on the React Three Drei <Float> component
-    // instead of the built-in GLB animation, as the GLB "Idle" seems to be
-    // a stretching/yawning animation rather than a static float.
     if (actions) {
-      // Stop all built-in animations to prevent stretching/yawning by default
+      // Stop all built-in animations to prevent glitches
       Object.values(actions).forEach(action => action?.stop());
-      
-      // If there's a wave animation, play it occasionally
-      const waveAction = actions["Wave_Hello"];
-      if (waveAction) {
-        const interval = setInterval(() => {
-          waveAction.reset().fadeIn(0.5).play();
-          waveAction.setLoop(THREE.LoopOnce, 1 as number);
-          waveAction.clampWhenFinished = true;
-          
-          // Crossfade back to nothing (static float) when done
-          waveAction.getMixer().addEventListener('finished', () => {
-            waveAction.fadeOut(0.5);
-          });
-        }, 8000); // Wave every 8 seconds
-        
-        return () => {
-          clearInterval(interval);
-          waveAction.getMixer().removeEventListener('finished', () => {});
-        };
-      }
     }
   }, [scene, actions]);
+
+  // Add a cute breathing and cursor-following effect
+  useFrame((state) => {
+    if (robotRef.current) {
+      const t = state.clock.getElapsedTime();
+      
+      // Gentle breathing effect (scaling up and down)
+      const baseScale = 2.6;
+      const breathingScale = baseScale + Math.sin(t * 2.5) * 0.04;
+      robotRef.current.scale.setScalar(breathingScale);
+      
+      // Make the robot gently look towards the mouse pointer
+      const targetX = (state.mouse.x * Math.PI) / 6;
+      const targetY = (state.mouse.y * Math.PI) / 8;
+      
+      // Smoothly interpolate current rotation towards target rotation
+      robotRef.current.rotation.y = THREE.MathUtils.lerp(robotRef.current.rotation.y, targetX, 0.05);
+      robotRef.current.rotation.x = THREE.MathUtils.lerp(robotRef.current.rotation.x, -targetY, 0.05);
+    }
+  });
 
   return (
     <Float 
       speed={3} 
-      rotationIntensity={0.1} 
+      rotationIntensity={0.15} 
       floatIntensity={1.5} 
     >
       <primitive 
