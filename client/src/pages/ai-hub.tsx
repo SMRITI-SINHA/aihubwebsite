@@ -1614,6 +1614,69 @@ function VoiceAssistantSection() {
 }
 
 
+function NyayaChatbotSection() {
+  return (
+    <Section
+      id="nyaya-chat"
+      kicker="Try it out"
+      title="Experience Nyaya AI"
+      description="Get a taste of our advanced legal AI chatbot. Ask a question and see how it provides clear, citation-backed answers."
+    >
+      <div className="grid gap-8 md:grid-cols-[1fr,1.5fr] md:items-start">
+        <div className="grid gap-6">
+          <div>
+            <div className="text-xl font-semibold mb-2">Your 24/7 Legal Assistant</div>
+            <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
+              Nyaya AI is designed specifically for the Indian legal context. It understands complex legal queries, summarizes long cases, and provides accurate information based on trusted sources.
+            </p>
+          </div>
+          
+          <div className="grid gap-4">
+            {[
+              { title: "General legal Q&A", desc: "Get answers to complex legal questions instantly.", icon: MessageSquareText },
+              { title: "Citation-backed answers", desc: "Every answer is backed by trusted sources.", icon: ShieldCheck },
+              { title: "Case summarization", desc: "Understand long judgments in seconds.", icon: Layers },
+              { title: "Structured outputs", desc: "Receive formatted, easy-to-read responses.", icon: Sparkles },
+            ].map((feature, idx) => {
+              const Icon = feature.icon;
+              return (
+                <div key={idx} className="flex gap-4 p-4 rounded-2xl border bg-white/80 shadow-sm transition hover:bg-white" data-testid={`card-nyaya-feature-${idx}`}>
+                  <div className="flex-shrink-0 mt-1">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl border bg-[hsl(var(--background))] text-[hsl(var(--primary))]">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-[hsl(var(--foreground))]">{feature.title}</h4>
+                    <p className="text-sm text-[hsl(var(--muted-foreground))] mt-1">{feature.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="relative rounded-[22px] border bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.70))] p-2 shadow-sm backdrop-blur">
+          <div className="absolute -top-3 -right-3 z-10">
+            <Badge className="bg-[hsl(var(--primary))] text-white shadow-md font-semibold px-3 py-1">
+              5 uses per day
+            </Badge>
+          </div>
+          <iframe
+            src="https://legal-ai-chat--smritiseema1022.replit.app/embed/nyaya"
+            width="100%"
+            height="600"
+            style={{ border: "none", borderRadius: "12px", background: "white" }}
+            allow="clipboard-write"
+            title="Nyaya AI Legal Assistant"
+            data-testid="iframe-nyaya-chat"
+          ></iframe>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 export default function AiHubLanding() {
   return (
     <div className="min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]">
@@ -1621,6 +1684,7 @@ export default function AiHubLanding() {
       <Hero />
       <Proof />
       <AiHub />
+      <NyayaChatbotSection />
       <VoiceAssistantSection />
       <Highlights />
       <Comparison />
