@@ -23,7 +23,12 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 import heroImg from "@assets/screenshot-1769761069657.png";
 import hubGridImg from "@assets/screenshot-1769761063482.png";
@@ -109,10 +114,16 @@ function Nav() {
               <span className="pointer-events-none absolute -inset-px rounded-xl opacity-0 ring-2 ring-[hsl(var(--primary))]/20 transition-opacity group-hover:opacity-100" />
             </span>
             <div className="leading-tight">
-              <div className="text-sm font-semibold tracking-[-0.01em]" data-testid="text-brand">
+              <div
+                className="text-sm font-semibold tracking-[-0.01em]"
+                data-testid="text-brand"
+              >
                 Chakshi
               </div>
-              <div className="text-[11px] text-[hsl(var(--muted-foreground))]" data-testid="text-brand-sub">
+              <div
+                className="text-[11px] text-[hsl(var(--muted-foreground))]"
+                data-testid="text-brand-sub"
+              >
                 AI Hub
               </div>
             </div>
@@ -173,9 +184,13 @@ function Hero() {
               data-testid="badge-hero"
             >
               <BadgeCheck className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
-              <span className="text-[hsl(var(--foreground))]/80">Complete legal AI workspace</span>
+              <span className="text-[hsl(var(--foreground))]/80">
+                Complete legal AI workspace
+              </span>
               <span className="mx-1 h-3 w-px bg-black/10" />
-              <span className="text-[hsl(var(--foreground))]/70">Draft • Chat • Research • Compliance</span>
+              <span className="text-[hsl(var(--foreground))]/70">
+                Draft • Chat • Research • Compliance
+              </span>
             </div>
 
             <h1
@@ -183,17 +198,25 @@ function Hero() {
               data-testid="text-hero-title"
             >
               Chakshi AI Hub
-              <span className="block text-[hsl(var(--foreground))]/85">Built for real legal work.</span>
+              <span className="block text-[hsl(var(--foreground))]/85">
+                Built for real legal work.
+              </span>
             </h1>
             <p
               className="mt-4 max-w-xl text-pretty text-base leading-relaxed text-[hsl(var(--muted-foreground))] md:text-lg"
               data-testid="text-hero-subtitle"
             >
-              Move from scattered tools to a single workspace: drafting that understands your style, research with citations, document chats, memo generation, and compliance checklists.
+              Move from scattered tools to a single workspace: drafting that
+              understands your style, research with citations, document chats,
+              memo generation, and compliance checklists.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
-              <Button className="rounded-full" data-testid="button-hero-primary" type="button">
+              <Button
+                className="rounded-full"
+                data-testid="button-hero-primary"
+                type="button"
+              >
                 Explore AI Hub
                 <ChevronRight className="h-4 w-4" />
               </Button>
@@ -257,11 +280,16 @@ function Hero() {
               <div className="absolute -inset-4 rounded-[28px] bg-[radial-gradient(closest-side,rgba(182,157,116,0.20),transparent)] blur-xl" />
               <div className="relative overflow-hidden rounded-[28px] border bg-white shadow-[0_18px_50px_-26px_rgba(31,40,57,0.55)]">
                 <div className="flex items-center justify-between border-b bg-[hsl(var(--card))]/60 px-4 py-3">
-                  <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-hero-preview-title">
+                  <div
+                    className="flex items-center gap-2 text-sm font-semibold"
+                    data-testid="text-hero-preview-title"
+                  >
                     <span className="h-2 w-2 rounded-full bg-[hsl(var(--primary))]" />
                     Chakshi Platform Preview
                   </div>
-                  <Badge className="rounded-full" data-testid="badge-live">Live</Badge>
+                  <Badge className="rounded-full" data-testid="badge-live">
+                    Live
+                  </Badge>
                 </div>
                 <div className="p-4">
                   <img
@@ -278,13 +306,23 @@ function Hero() {
               className="pointer-events-none absolute -bottom-6 -left-6 hidden w-[240px] rounded-2xl border bg-white/70 p-4 shadow-sm backdrop-blur md:block"
               initial={{ opacity: 0, y: 10, x: -6 }}
               animate={{ opacity: 1, y: 0, x: 0 }}
-              transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.65,
+                delay: 0.15,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
-              <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-hero-float-1">
+              <div
+                className="flex items-center gap-2 text-sm font-semibold"
+                data-testid="text-hero-float-1"
+              >
                 <FileText className="h-4 w-4 text-[hsl(var(--primary))]" />
                 Draft with research
               </div>
-              <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hero-float-1-sub">
+              <div
+                className="mt-1 text-xs text-[hsl(var(--muted-foreground))]"
+                data-testid="text-hero-float-1-sub"
+              >
                 Side-by-side panel for provisions and notes.
               </div>
             </motion.div>
@@ -293,13 +331,23 @@ function Hero() {
               className="pointer-events-none absolute -right-4 top-10 hidden w-[220px] rounded-2xl border bg-white/70 p-4 shadow-sm backdrop-blur md:block"
               initial={{ opacity: 0, y: -10, x: 10 }}
               animate={{ opacity: 1, y: 0, x: 0 }}
-              transition={{ duration: 0.65, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.65,
+                delay: 0.22,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
-              <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-hero-float-2">
+              <div
+                className="flex items-center gap-2 text-sm font-semibold"
+                data-testid="text-hero-float-2"
+              >
                 <Gavel className="h-4 w-4 text-[hsl(var(--primary))]" />
                 Citation-backed answers
               </div>
-              <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hero-float-2-sub">
+              <div
+                className="mt-1 text-xs text-[hsl(var(--muted-foreground))]"
+                data-testid="text-hero-float-2-sub"
+              >
                 Links to trusted sources.
               </div>
             </motion.div>
@@ -311,11 +359,19 @@ function Hero() {
         <div className="rounded-[28px] border bg-white/55 p-6 shadow-sm backdrop-blur md:p-8">
           <div className="grid gap-6 md:grid-cols-[1.2fr,0.8fr] md:items-center">
             <div>
-              <div className="text-sm font-semibold" data-testid="text-hero-bottom-title">
+              <div
+                className="text-sm font-semibold"
+                data-testid="text-hero-bottom-title"
+              >
                 One workspace, many tools
               </div>
-              <div className="mt-2 text-sm text-[hsl(var(--muted-foreground))]" data-testid="text-hero-bottom-sub">
-                The AI Hub brings drafting, chat, research, and compliance into a single flow—so your team can move faster without switching contexts.
+              <div
+                className="mt-2 text-sm text-[hsl(var(--muted-foreground))]"
+                data-testid="text-hero-bottom-sub"
+              >
+                The AI Hub brings drafting, chat, research, and compliance into
+                a single flow—so your team can move faster without switching
+                contexts.
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2 md:justify-end">
@@ -367,20 +423,45 @@ function Proof() {
         >
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.14]"
-            style={{ backgroundImage: "url(/images/noise-cream.jpg)", backgroundSize: "520px 520px" }}
+            style={{
+              backgroundImage: "url(/images/noise-cream.jpg)",
+              backgroundSize: "520px 520px",
+            }}
           />
           <div className="relative grid gap-6 md:grid-cols-[1.2fr,0.8fr] md:items-center">
             <div>
-              <div className="text-sm font-semibold" data-testid="text-proof-title">
+              <div
+                className="text-sm font-semibold"
+                data-testid="text-proof-title"
+              >
                 What changes for your team
               </div>
               <div className="grid gap-2" data-testid="stack-proof-copy">
-                <p className="text-sm leading-relaxed text-[hsl(var(--muted-foreground))]" data-testid="text-proof-sub">
-                  Fewer tabs, fewer copy-pastes, and fewer dead-ends. Each module is designed to be explainable, structured, and easy to cite.
+                <p
+                  className="text-sm leading-relaxed text-[hsl(var(--muted-foreground))]"
+                  data-testid="text-proof-sub"
+                >
+                  Fewer tabs, fewer copy-pastes, and fewer dead-ends. Each
+                  module is designed to be explainable, structured, and easy to
+                  cite.
                 </p>
-                <div className="flex flex-wrap gap-2" data-testid="row-proof-badges">
-                  {["Trusted sources", "Citations", "CNR", "Document chat", "Compliance"].map((t) => (
-                    <Badge key={t} variant="secondary" className="rounded-full bg-white" data-testid={`badge-proof-${t.toLowerCase().replaceAll(" ", "-")}`}>
+                <div
+                  className="flex flex-wrap gap-2"
+                  data-testid="row-proof-badges"
+                >
+                  {[
+                    "Trusted sources",
+                    "Citations",
+                    "CNR",
+                    "Document chat",
+                    "Compliance",
+                  ].map((t) => (
+                    <Badge
+                      key={t}
+                      variant="secondary"
+                      className="rounded-full bg-white"
+                      data-testid={`badge-proof-${t.toLowerCase().replaceAll(" ", "-")}`}
+                    >
                       {t}
                     </Badge>
                   ))}
@@ -388,15 +469,32 @@ function Proof() {
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2" data-testid="grid-proof-stats">
+            <div
+              className="grid gap-3 sm:grid-cols-2"
+              data-testid="grid-proof-stats"
+            >
               {stats.map((s, idx) => {
                 const Icon = s.icon;
                 return (
-                  <div key={s.label} className="rounded-2xl border bg-white/70 p-4 shadow-sm" data-testid={`card-proof-stat-${idx}`}>
+                  <div
+                    key={s.label}
+                    className="rounded-2xl border bg-white/70 p-4 shadow-sm"
+                    data-testid={`card-proof-stat-${idx}`}
+                  >
                     <div className="flex items-center justify-between gap-3">
                       <div>
-                        <div className="text-xs text-[hsl(var(--muted-foreground))]" data-testid={`text-proof-stat-label-${idx}`}>{s.label}</div>
-                        <div className="mt-1 text-sm font-semibold" data-testid={`text-proof-stat-value-${idx}`}>{s.value}</div>
+                        <div
+                          className="text-xs text-[hsl(var(--muted-foreground))]"
+                          data-testid={`text-proof-stat-label-${idx}`}
+                        >
+                          {s.label}
+                        </div>
+                        <div
+                          className="mt-1 text-sm font-semibold"
+                          data-testid={`text-proof-stat-value-${idx}`}
+                        >
+                          {s.value}
+                        </div>
                       </div>
                       <span className="grid h-9 w-9 place-items-center rounded-xl border bg-[hsl(var(--background))]">
                         <Icon className="h-4 w-4 text-[hsl(var(--primary))]" />
@@ -464,22 +562,47 @@ function Highlights() {
     >
       <div className="rounded-[30px] border bg-white/55 p-2 shadow-sm backdrop-blur">
         <div className="grid gap-0 rounded-[26px] border bg-white p-2 [@media(min-width:720px)]:grid-cols-[minmax(0,1.25fr),minmax(0,0.75fr)] [@media(min-width:720px)]:items-start">
-          <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3" data-testid="panel-highlights-video">
+          <div
+            className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3"
+            data-testid="panel-highlights-video"
+          >
             <div className="rounded-[18px] border bg-white shadow-sm overflow-hidden">
               <div className="flex items-start justify-between gap-3 border-b px-4 py-3">
                 <div className="min-w-0">
-                  <div className="text-sm font-semibold" data-testid="text-highlights-title">{current.title}</div>
-                  <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-highlights-desc">{current.desc}</div>
+                  <div
+                    className="text-sm font-semibold"
+                    data-testid="text-highlights-title"
+                  >
+                    {current.title}
+                  </div>
+                  <div
+                    className="mt-1 text-xs text-[hsl(var(--muted-foreground))]"
+                    data-testid="text-highlights-desc"
+                  >
+                    {current.desc}
+                  </div>
                 </div>
-                <Badge variant="secondary" className="rounded-full bg-white" data-testid="badge-highlights-preview">
+                <Badge
+                  variant="secondary"
+                  className="rounded-full bg-white"
+                  data-testid="badge-highlights-preview"
+                >
                   Video demo
                 </Badge>
               </div>
 
-              <div className="sr-only" data-testid="text-highlights-active-video-src">{current.video || ""}</div>
+              <div
+                className="sr-only"
+                data-testid="text-highlights-active-video-src"
+              >
+                {current.video || ""}
+              </div>
 
               <div className="p-3 md:p-4">
-                <div className="relative overflow-hidden rounded-2xl border bg-[hsl(var(--card))]/60" data-testid="video-highlights-container">
+                <div
+                  className="relative overflow-hidden rounded-2xl border bg-[hsl(var(--card))]/60"
+                  data-testid="video-highlights-container"
+                >
                   {current.video ? (
                     <motion.video
                       key={current.title}
@@ -497,10 +620,21 @@ function Highlights() {
                       transition={{ duration: 0.25 }}
                     />
                   ) : (
-                    <div className="grid aspect-video w-full place-items-center bg-white/60" data-testid="placeholder-highlights-video">
+                    <div
+                      className="grid aspect-video w-full place-items-center bg-white/60"
+                      data-testid="placeholder-highlights-video"
+                    >
                       <div className="text-center">
-                        <div className="text-sm font-semibold" data-testid="text-highlights-placeholder-title">Add a video for this feature</div>
-                        <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-highlights-placeholder-sub">
+                        <div
+                          className="text-sm font-semibold"
+                          data-testid="text-highlights-placeholder-title"
+                        >
+                          Add a video for this feature
+                        </div>
+                        <div
+                          className="mt-1 text-xs text-[hsl(var(--muted-foreground))]"
+                          data-testid="text-highlights-placeholder-sub"
+                        >
                           Upload an .mp4 and we’ll wire it in.
                         </div>
                       </div>
@@ -511,10 +645,18 @@ function Highlights() {
             </div>
           </div>
 
-          <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3" data-testid="panel-highlights-list">
+          <div
+            className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3"
+            data-testid="panel-highlights-list"
+          >
             <div className="rounded-[18px] border bg-white shadow-sm overflow-hidden">
               <div className="border-b px-4 py-3">
-                <div className="text-xs font-semibold text-[hsl(var(--foreground))]/70" data-testid="text-highlights-list-title">Highlights</div>
+                <div
+                  className="text-xs font-semibold text-[hsl(var(--foreground))]/70"
+                  data-testid="text-highlights-list-title"
+                >
+                  Highlights
+                </div>
               </div>
 
               <div className="p-2">
@@ -536,13 +678,29 @@ function Highlights() {
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
-                            <div className="text-sm font-semibold" data-testid={`text-highlights-item-title-${idx}`}>{it.title}</div>
+                            <div
+                              className="text-sm font-semibold"
+                              data-testid={`text-highlights-item-title-${idx}`}
+                            >
+                              {it.title}
+                            </div>
                           </div>
-                          <span className={cn(
-                            "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border bg-white transition",
-                            selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
-                          )}>
-                            <ChevronRight className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--muted-foreground))]")} />
+                          <span
+                            className={cn(
+                              "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border bg-white transition",
+                              selected
+                                ? "border-[hsl(var(--primary))]/25"
+                                : "border-black/10",
+                            )}
+                          >
+                            <ChevronRight
+                              className={cn(
+                                "h-4 w-4",
+                                selected
+                                  ? "text-[hsl(var(--primary))]"
+                                  : "text-[hsl(var(--muted-foreground))]",
+                              )}
+                            />
                           </span>
                         </div>
                       </button>
@@ -568,26 +726,46 @@ function AiHub() {
           {
             title: "AI Legal Drafting",
             desc: "Draft with an integrated research panel and structured prompts.",
-            video: "/videos/Upload ref docs demo final - Made with Clipchamp.mp4",
-            points: ["Integrated research panel", "Structured prompts", "Clean export-ready drafting"],
+            video:
+              "/videos/Upload ref docs demo final - Made with Clipchamp.mp4",
+            points: [
+              "Integrated research panel",
+              "Structured prompts",
+              "Clean export-ready drafting",
+            ],
           },
           {
             title: "Empty Document",
             desc: "Start from a blank doc and build with AI assistance.",
-            video: "/videos/empty doc+ ai assis demo final - Made with Clipchamp.mp4",
-            points: ["Blank doc to draft", "Quick sections", "Context-aware suggestions"],
+            video:
+              "/videos/empty doc+ ai assis demo final - Made with Clipchamp.mp4",
+            points: [
+              "Blank doc to draft",
+              "Quick sections",
+              "Context-aware suggestions",
+            ],
           },
           {
             title: "Custom Drafting",
             desc: "Upload your format/template and generate in your structure.",
-            video: "/videos/Upload ref docs demo final - Made with Clipchamp.mp4",
-            points: ["Template-first drafting", "Format retention", "Consistent styling"],
+            video:
+              "/videos/Upload ref docs demo final - Made with Clipchamp.mp4",
+            points: [
+              "Template-first drafting",
+              "Format retention",
+              "Consistent styling",
+            ],
           },
           {
             title: "Train Your Drafts",
             desc: "Teach Chakshi your firm’s SOPs, templates, and past drafts.",
-            video: "/videos/Train your drafts demo final - Made with Clipchamp.mp4",
-            points: ["Firm SOP training", "Reusable templates", "Style alignment"],
+            video:
+              "/videos/Train your drafts demo final - Made with Clipchamp.mp4",
+            points: [
+              "Firm SOP training",
+              "Reusable templates",
+              "Style alignment",
+            ],
           },
         ],
       },
@@ -599,19 +777,31 @@ function AiHub() {
             title: "CNR Chatbot",
             desc: "Case status lookup using a CNR number.",
             video: "/videos/cnr demo final - Made with Clipchamp.mp4",
-            points: ["CNR-based case lookup", "Fast status summaries", "Less manual searching"],
+            points: [
+              "CNR-based case lookup",
+              "Fast status summaries",
+              "Less manual searching",
+            ],
           },
           {
             title: "DocuChat",
             desc: "Upload documents and extract timelines, issues, and evidence.",
             video: "/videos/Docuchat demo final - Made with Clipchamp.mp4",
-            points: ["Large doc support", "Issue extraction", "Evidence finder"],
+            points: [
+              "Large doc support",
+              "Issue extraction",
+              "Evidence finder",
+            ],
           },
           {
             title: "Nyaya AI",
             desc: "Ask legal questions and get concise, citation-backed outputs.",
             video: "/videos/Nyaya ai demo final - Made with Clipchamp.mp4",
-            points: ["Trusted sources", "Citation-backed answers", "Structured outputs"],
+            points: [
+              "Trusted sources",
+              "Citation-backed answers",
+              "Structured outputs",
+            ],
           },
         ],
       },
@@ -623,13 +813,21 @@ function AiHub() {
             title: "AI Research Assistant",
             desc: "Advanced research with citations, timelines, and conflict detection.",
             video: "/videos/Research demo final - Made with Clipchamp.mp4",
-            points: ["Trusted sources only", "Citations & references", "Conflict detection"],
+            points: [
+              "Trusted sources only",
+              "Citations & references",
+              "Conflict detection",
+            ],
           },
           {
             title: "Legal Memo Generator",
             desc: "Generate IRAC/CRAC/CREAC memos from facts and sources.",
             video: "/videos/Legal Memo demo final - Made with Clipchamp.mp4",
-            points: ["IRAC/CRAC formats", "Clear issue framing", "Export-ready memos"],
+            points: [
+              "IRAC/CRAC formats",
+              "Clear issue framing",
+              "Export-ready memos",
+            ],
           },
           {
             title: "Compliance Checklist",
@@ -658,14 +856,20 @@ function AiHub() {
     >
       <div className="rounded-[30px] border bg-white/55 p-2 shadow-sm backdrop-blur">
         <div className="rounded-[26px] border bg-white px-4 py-4 md:px-6 md:py-5">
-          <div className="text-xs font-semibold text-[hsl(var(--foreground))]/70" data-testid="text-hub-tabs-title">
+          <div
+            className="text-xs font-semibold text-[hsl(var(--foreground))]/70"
+            data-testid="text-hub-tabs-title"
+          >
             Modules
           </div>
 
           <div className="mt-3" data-testid="panel-hub-tabs">
             <div className="rounded-full border bg-[hsl(var(--card))]/70 p-1 shadow-sm backdrop-blur">
               <div className="flex overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none]">
-                <div className="flex w-max items-center gap-1" data-testid="row-hub-tabs">
+                <div
+                  className="flex w-max items-center gap-1"
+                  data-testid="row-hub-tabs"
+                >
                   {groups.map((grp, idx) => {
                     const selected = idx === g;
                     const Icon = grp.icon;
@@ -688,17 +892,23 @@ function AiHub() {
                         <span
                           className={cn(
                             "grid h-7 w-7 place-items-center rounded-full border bg-[hsl(var(--background))] transition",
-                            selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
+                            selected
+                              ? "border-[hsl(var(--primary))]/25"
+                              : "border-black/10",
                           )}
                         >
                           <Icon
                             className={cn(
                               "h-4 w-4",
-                              selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--foreground))]/70",
+                              selected
+                                ? "text-[hsl(var(--primary))]"
+                                : "text-[hsl(var(--foreground))]/70",
                             )}
                           />
                         </span>
-                        <span data-testid={`text-hub-tab-title-${idx}`}>{grp.title}</span>
+                        <span data-testid={`text-hub-tab-title-${idx}`}>
+                          {grp.title}
+                        </span>
                       </button>
                     );
                   })}
@@ -707,18 +917,34 @@ function AiHub() {
             </div>
           </div>
 
-          <div className="mt-5 flex flex-col gap-0 [@media(min-width:960px)]:flex-row [@media(min-width:960px)]:items-stretch" data-testid="layout-hub">
+          <div
+            className="mt-5 flex flex-col gap-0 [@media(min-width:960px)]:flex-row [@media(min-width:960px)]:items-stretch"
+            data-testid="layout-hub"
+          >
             <div className="w-full [@media(min-width:960px)]:w-[340px]">
-              <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3" data-testid="panel-hub-left">
+              <div
+                className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3"
+                data-testid="panel-hub-left"
+              >
                 <div className="rounded-[18px] border bg-white shadow-sm overflow-hidden">
                   <div className="flex items-center justify-between gap-3 border-b px-4 py-3">
                     <div>
-                      <div className="text-sm font-semibold" data-testid="text-hub-active-group">{activeGroup.title}</div>
-                      <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-active-group-sub">
+                      <div
+                        className="text-sm font-semibold"
+                        data-testid="text-hub-active-group"
+                      >
+                        {activeGroup.title}
+                      </div>
+                      <div
+                        className="mt-1 text-xs text-[hsl(var(--muted-foreground))]"
+                        data-testid="text-hub-active-group-sub"
+                      >
                         Choose a tool to preview
                       </div>
                     </div>
-                    <Badge className="rounded-full" data-testid="badge-hub">AI Hub</Badge>
+                    <Badge className="rounded-full" data-testid="badge-hub">
+                      AI Hub
+                    </Badge>
                   </div>
 
                   <div className="p-2" data-testid="list-hub-tools">
@@ -740,15 +966,29 @@ function AiHub() {
                           >
                             <div className="flex items-start justify-between gap-3">
                               <div className="min-w-0">
-                                <div className="text-sm font-semibold" data-testid={`text-hub-item-title-${idx}`}>{it.title}</div>
+                                <div
+                                  className="text-sm font-semibold"
+                                  data-testid={`text-hub-item-title-${idx}`}
+                                >
+                                  {it.title}
+                                </div>
                               </div>
                               <span
                                 className={cn(
                                   "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border bg-white transition",
-                                  selected ? "border-[hsl(var(--primary))]/25" : "border-black/10",
+                                  selected
+                                    ? "border-[hsl(var(--primary))]/25"
+                                    : "border-black/10",
                                 )}
                               >
-                                <ChevronRight className={cn("h-4 w-4", selected ? "text-[hsl(var(--primary))]" : "text-[hsl(var(--muted-foreground))]")} />
+                                <ChevronRight
+                                  className={cn(
+                                    "h-4 w-4",
+                                    selected
+                                      ? "text-[hsl(var(--primary))]"
+                                      : "text-[hsl(var(--muted-foreground))]",
+                                  )}
+                                />
                               </span>
                             </div>
                           </button>
@@ -761,24 +1001,49 @@ function AiHub() {
             </div>
 
             <div className="relative" data-testid="panel-hub-preview">
-              <div className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3 [@media(min-width:960px)]:-ml-px" data-testid="panel-hub-right">
+              <div
+                className="rounded-[22px] border bg-[hsl(var(--background))] p-2 md:p-3 [@media(min-width:960px)]:-ml-px"
+                data-testid="panel-hub-right"
+              >
                 <div className="rounded-[18px] border bg-white shadow-sm overflow-hidden">
                   <div className="flex items-start justify-between gap-3 border-b px-4 py-3">
                     <div className="min-w-0">
-                      <div className="text-sm font-semibold" data-testid="text-hub-preview-title">{activeItem.title}</div>
-                      <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-preview-desc">{activeItem.desc}</div>
+                      <div
+                        className="text-sm font-semibold"
+                        data-testid="text-hub-preview-title"
+                      >
+                        {activeItem.title}
+                      </div>
+                      <div
+                        className="mt-1 text-xs text-[hsl(var(--muted-foreground))]"
+                        data-testid="text-hub-preview-desc"
+                      >
+                        {activeItem.desc}
+                      </div>
                     </div>
-                    <Badge variant="secondary" className="rounded-full bg-white" data-testid="badge-hub-preview">
+                    <Badge
+                      variant="secondary"
+                      className="rounded-full bg-white"
+                      data-testid="badge-hub-preview"
+                    >
                       Video preview
                     </Badge>
                   </div>
 
-                  <div className="sr-only" data-testid="text-hub-active-video-src">{activeItem.video || ""}</div>
+                  <div
+                    className="sr-only"
+                    data-testid="text-hub-active-video-src"
+                  >
+                    {activeItem.video || ""}
+                  </div>
 
                   <div className="p-3 md:p-4">
                     <div className="grid gap-4">
                       <div>
-                        <div className="relative overflow-hidden rounded-2xl border bg-[hsl(var(--card))]/60" data-testid="video-hub-container">
+                        <div
+                          className="relative overflow-hidden rounded-2xl border bg-[hsl(var(--card))]/60"
+                          data-testid="video-hub-container"
+                        >
                           {activeItem.video ? (
                             <motion.video
                               key={activeItem.title}
@@ -796,10 +1061,21 @@ function AiHub() {
                               transition={{ duration: 0.25 }}
                             />
                           ) : (
-                            <div className="grid aspect-video w-full place-items-center bg-white/60" data-testid="placeholder-hub-video">
+                            <div
+                              className="grid aspect-video w-full place-items-center bg-white/60"
+                              data-testid="placeholder-hub-video"
+                            >
                               <div className="text-center">
-                                <div className="text-sm font-semibold" data-testid="text-hub-placeholder-title">Add a video for this feature</div>
-                                <div className="mt-1 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-hub-placeholder-sub">
+                                <div
+                                  className="text-sm font-semibold"
+                                  data-testid="text-hub-placeholder-title"
+                                >
+                                  Add a video for this feature
+                                </div>
+                                <div
+                                  className="mt-1 text-xs text-[hsl(var(--muted-foreground))]"
+                                  data-testid="text-hub-placeholder-sub"
+                                >
                                   Upload an .mp4 and we’ll wire it in.
                                 </div>
                               </div>
@@ -807,22 +1083,45 @@ function AiHub() {
                           )}
                         </div>
 
-                        <div className="mt-4 rounded-2xl border bg-white/60 p-4" data-testid="panel-hub-points">
-                          <div className="flex items-center justify-between gap-3" data-testid="row-hub-points-header">
-                            <div className="flex items-center gap-2 text-sm font-semibold" data-testid="text-hub-points-title">
+                        <div
+                          className="mt-4 rounded-2xl border bg-white/60 p-4"
+                          data-testid="panel-hub-points"
+                        >
+                          <div
+                            className="flex items-center justify-between gap-3"
+                            data-testid="row-hub-points-header"
+                          >
+                            <div
+                              className="flex items-center gap-2 text-sm font-semibold"
+                              data-testid="text-hub-points-title"
+                            >
                               <Check className="h-4 w-4 text-[hsl(var(--primary))]" />
                               Key highlights
                             </div>
                           </div>
-                          <ul className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2" data-testid="grid-hub-points">
-                            {(activeItem.points ?? []).map((p: string, idx: number) => (
-                              <li key={p} className="flex items-start gap-2" data-testid={`row-hub-point-${idx}`}>
-                                <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-[hsl(var(--primary))]/12">
-                                  <Check className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
-                                </span>
-                                <span className="text-sm text-[hsl(var(--foreground))]/85" data-testid={`text-hub-point-${idx}`}>{p}</span>
-                              </li>
-                            ))}
+                          <ul
+                            className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-2"
+                            data-testid="grid-hub-points"
+                          >
+                            {(activeItem.points ?? []).map(
+                              (p: string, idx: number) => (
+                                <li
+                                  key={p}
+                                  className="flex items-start gap-2"
+                                  data-testid={`row-hub-point-${idx}`}
+                                >
+                                  <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-[hsl(var(--primary))]/12">
+                                    <Check className="h-3.5 w-3.5 text-[hsl(var(--primary))]" />
+                                  </span>
+                                  <span
+                                    className="text-sm text-[hsl(var(--foreground))]/85"
+                                    data-testid={`text-hub-point-${idx}`}
+                                  >
+                                    {p}
+                                  </span>
+                                </li>
+                              ),
+                            )}
                           </ul>
                         </div>
                       </div>
@@ -840,16 +1139,56 @@ function AiHub() {
 
 function Comparison() {
   const rows = [
-    { label: "Does legal drafting for you", a: "Does not do Legal Drafting", b: "Does Legal Drafting for you" },
-    { label: "Drafting from uploaded PDFs/Word", a: "Does not do Legal Drafting based on uploaded pdf/word", b: "Does Legal Drafting based on uploaded pdf/word" },
-    { label: "Automatic legal research", a: "Does not do automatic Legal Research", b: "Does accurate automatic Legal Research" },
-    { label: "Legal research inside the app", a: "Does not allow you to do Legal Research", b: "Allows you to do Legal Research" },
-    { label: "Read a case within app", a: "Does not allow you to read cases", b: "Allows you to read cases inside app" },
-    { label: "Generate arguments", a: "Does not allow you to generate arguments", b: "Allows you to generate arguments" },
-    { label: "Generate summaries", a: "Does not allow you to generate summaries", b: "Allows you to generate summaries" },
-    { label: "Prepare case notes", a: "Does not allow you to prepare case notes", b: "Allows you to prepare case notes" },
-    { label: "Extract dates from PDFs", a: "Does not allow you to prepare list of dates from a pdf automatically", b: "Allows you to prepare list of dates from a pdf automatically" },
-    { label: "Expert legal memos", a: "Does not prepare expert legal memos for you", b: "Prepares expert legal memos for you" },
+    {
+      label: "Does legal drafting for you",
+      a: "Does not do Legal Drafting",
+      b: "Does Legal Drafting for you",
+    },
+    {
+      label: "Drafting from uploaded PDFs/Word",
+      a: "Does not do Legal Drafting based on uploaded pdf/word",
+      b: "Does Legal Drafting based on uploaded pdf/word",
+    },
+    {
+      label: "Automatic legal research",
+      a: "Does not do automatic Legal Research",
+      b: "Does accurate automatic Legal Research",
+    },
+    {
+      label: "Legal research inside the app",
+      a: "Does not allow you to do Legal Research",
+      b: "Allows you to do Legal Research",
+    },
+    {
+      label: "Read a case within app",
+      a: "Does not allow you to read cases",
+      b: "Allows you to read cases inside app",
+    },
+    {
+      label: "Generate arguments",
+      a: "Does not allow you to generate arguments",
+      b: "Allows you to generate arguments",
+    },
+    {
+      label: "Generate summaries",
+      a: "Does not allow you to generate summaries",
+      b: "Allows you to generate summaries",
+    },
+    {
+      label: "Prepare case notes",
+      a: "Does not allow you to prepare case notes",
+      b: "Allows you to prepare case notes",
+    },
+    {
+      label: "Extract dates from PDFs",
+      a: "Does not allow you to prepare list of dates from a pdf automatically",
+      b: "Allows you to prepare list of dates from a pdf automatically",
+    },
+    {
+      label: "Expert legal memos",
+      a: "Does not prepare expert legal memos for you",
+      b: "Prepares expert legal memos for you",
+    },
   ];
 
   return (
@@ -858,7 +1197,10 @@ function Comparison() {
         <div className="relative overflow-hidden rounded-[34px] border bg-[radial-gradient(1200px_520px_at_50%_-12%,rgba(31,40,57,0.62),transparent)] p-8 text-white shadow-[0_30px_90px_-60px_rgba(0,0,0,0.9)] md:p-10">
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.10]"
-            style={{ backgroundImage: "url(/images/noise-cream.jpg)", backgroundSize: "520px 520px" }}
+            style={{
+              backgroundImage: "url(/images/noise-cream.jpg)",
+              backgroundSize: "520px 520px",
+            }}
           />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.52),rgba(0,0,0,0.20),rgba(0,0,0,0.36))]" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(180deg,rgba(0,0,0,0.22),transparent)]" />
@@ -871,26 +1213,63 @@ function Comparison() {
               <Sparkles className="h-3.5 w-3.5" />
               Stay ahead with AI
             </div>
-            <h2 className="mt-4 text-balance text-3xl font-[750] tracking-[-0.03em] md:text-5xl" data-testid="text-compare-title">
+            <h2
+              className="mt-4 text-balance text-3xl font-[750] tracking-[-0.03em] md:text-5xl"
+              data-testid="text-compare-title"
+            >
               Your competitors are already using AI for a reason
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/80 md:text-base" data-testid="text-compare-sub">
-              Chakshi AI Hub reduces repetitive work and keeps knowledge structured, searchable, and ready to cite.
+            <p
+              className="mt-3 max-w-2xl text-sm leading-relaxed text-white/80 md:text-base"
+              data-testid="text-compare-sub"
+            >
+              Chakshi AI Hub reduces repetitive work and keeps knowledge
+              structured, searchable, and ready to cite.
             </p>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2" data-testid="grid-compare">
-              <div className="rounded-3xl border border-white/15 bg-white/10 backdrop-blur" data-testid="card-compare-without">
+            <div
+              className="mt-8 grid gap-4 md:grid-cols-2"
+              data-testid="grid-compare"
+            >
+              <div
+                className="rounded-3xl border border-white/15 bg-white/10 backdrop-blur"
+                data-testid="card-compare-without"
+              >
                 <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-                  <div className="text-sm font-semibold" data-testid="text-compare-left-title">Without Chakshi</div>
-                  <span className="text-xs text-white/65" data-testid="text-compare-left-sub">Traditional workflow</span>
+                  <div
+                    className="text-sm font-semibold"
+                    data-testid="text-compare-left-title"
+                  >
+                    Without Chakshi
+                  </div>
+                  <span
+                    className="text-xs text-white/65"
+                    data-testid="text-compare-left-sub"
+                  >
+                    Traditional workflow
+                  </span>
                 </div>
                 <div className="divide-y divide-white/10">
                   {rows.map((r, idx) => (
-                    <div key={r.label} className="grid grid-cols-[16px,1fr] gap-3 px-5 py-4" data-testid={`row-compare-left-${idx}`}>
+                    <div
+                      key={r.label}
+                      className="grid grid-cols-[16px,1fr] gap-3 px-5 py-4"
+                      data-testid={`row-compare-left-${idx}`}
+                    >
                       <X className="mt-0.5 h-4 w-4 text-red-400" />
                       <div className="min-w-0">
-                        <div className="text-xs text-white/70" data-testid={`text-compare-left-label-${idx}`}>{r.label}</div>
-                        <div className="mt-2 text-sm font-semibold text-white" data-testid={`text-compare-left-value-${idx}`}>{r.a}</div>
+                        <div
+                          className="text-xs text-white/70"
+                          data-testid={`text-compare-left-label-${idx}`}
+                        >
+                          {r.label}
+                        </div>
+                        <div
+                          className="mt-2 text-sm font-semibold text-white"
+                          data-testid={`text-compare-left-value-${idx}`}
+                        >
+                          {r.a}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -902,16 +1281,40 @@ function Comparison() {
                 data-testid="card-compare-with"
               >
                 <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-                  <div className="text-sm font-semibold" data-testid="text-compare-right-title">With Chakshi AI Hub</div>
-                  <Badge className="rounded-full" data-testid="badge-compare-right">Recommended</Badge>
+                  <div
+                    className="text-sm font-semibold"
+                    data-testid="text-compare-right-title"
+                  >
+                    With Chakshi AI Hub
+                  </div>
+                  <Badge
+                    className="rounded-full"
+                    data-testid="badge-compare-right"
+                  >
+                    Recommended
+                  </Badge>
                 </div>
                 <div className="divide-y divide-white/10">
                   {rows.map((r, idx) => (
-                    <div key={r.label} className="grid grid-cols-[16px,1fr] gap-3 px-5 py-4" data-testid={`row-compare-right-${idx}`}>
+                    <div
+                      key={r.label}
+                      className="grid grid-cols-[16px,1fr] gap-3 px-5 py-4"
+                      data-testid={`row-compare-right-${idx}`}
+                    >
                       <CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-300" />
                       <div className="min-w-0">
-                        <div className="text-xs text-white/75" data-testid={`text-compare-right-label-${idx}`}>{r.label}</div>
-                        <div className="mt-2 text-sm font-semibold text-white" data-testid={`text-compare-right-value-${idx}`}>{r.b}</div>
+                        <div
+                          className="text-xs text-white/75"
+                          data-testid={`text-compare-right-label-${idx}`}
+                        >
+                          {r.label}
+                        </div>
+                        <div
+                          className="mt-2 text-sm font-semibold text-white"
+                          data-testid={`text-compare-right-value-${idx}`}
+                        >
+                          {r.b}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -919,8 +1322,15 @@ function Comparison() {
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3" data-testid="row-compare-cta-buttons">
-              <Button className="rounded-full" data-testid="button-compare-primary" type="button">
+            <div
+              className="mt-8 flex flex-wrap items-center gap-3"
+              data-testid="row-compare-cta-buttons"
+            >
+              <Button
+                className="rounded-full"
+                data-testid="button-compare-primary"
+                type="button"
+              >
                 Explore AI Hub
                 <ArrowRight className="h-4 w-4" />
               </Button>
@@ -961,7 +1371,7 @@ function FAQ() {
     {
       q: "Can we use it for document-heavy cases?",
       a: "Yes. DocuChat supports large uploads and helps extract timelines, issues, and evidence across documents.",
-    }
+    },
   ];
 
   return (
@@ -969,17 +1379,27 @@ function FAQ() {
       id="faq"
       kicker="Answers, clearly"
       title="Frequently asked questions"
-      description="Everything you need to understand the AI Hub and how it fits into your practice." 
+      description="Everything you need to understand the AI Hub and how it fits into your practice."
     >
       <div className="rounded-[28px] border bg-white/60 p-2 shadow-sm backdrop-blur">
         <div className="rounded-[22px] border bg-white px-4 py-2 md:px-6">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((f, idx) => (
-              <AccordionItem key={f.q} value={`item-${idx}`} className="border-b last:border-b-0">
-                <AccordionTrigger data-testid={`button-faq-${idx}`} className="text-left text-sm md:text-base">
+              <AccordionItem
+                key={f.q}
+                value={`item-${idx}`}
+                className="border-b last:border-b-0"
+              >
+                <AccordionTrigger
+                  data-testid={`button-faq-${idx}`}
+                  className="text-left text-sm md:text-base"
+                >
                   {f.q}
                 </AccordionTrigger>
-                <AccordionContent data-testid={`text-faq-${idx}`} className="text-sm text-[hsl(var(--muted-foreground))]">
+                <AccordionContent
+                  data-testid={`text-faq-${idx}`}
+                  className="text-sm text-[hsl(var(--muted-foreground))]"
+                >
                   {f.a}
                 </AccordionContent>
               </AccordionItem>
@@ -997,23 +1417,36 @@ function Footer() {
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
         <div className="grid gap-8 md:grid-cols-2 md:items-center">
           <div>
-            <div className="flex items-center gap-2" data-testid="text-footer-brand">
+            <div
+              className="flex items-center gap-2"
+              data-testid="text-footer-brand"
+            >
               <span className="grid h-9 w-9 place-items-center rounded-xl border bg-white shadow-sm">
                 <Scale className="h-5 w-5 text-[hsl(var(--primary))]" />
               </span>
               <div>
                 <div className="text-sm font-semibold">Chakshi AI Hub</div>
-                <div className="text-xs text-[hsl(var(--muted-foreground))]">A complete legal AI workspace</div>
+                <div className="text-xs text-[hsl(var(--muted-foreground))]">
+                  A complete legal AI workspace
+                </div>
               </div>
             </div>
-            <div className="mt-3 text-sm text-[hsl(var(--muted-foreground))]" data-testid="text-footer-desc">
-              Draft, research, and validate with structured AI assistance designed for real legal workflows.
+            <div
+              className="mt-3 text-sm text-[hsl(var(--muted-foreground))]"
+              data-testid="text-footer-desc"
+            >
+              Draft, research, and validate with structured AI assistance
+              designed for real legal workflows.
             </div>
           </div>
 
           <div className="md:text-right">
             <div className="inline-flex flex-wrap items-center gap-2">
-              <Button className="rounded-full" data-testid="button-footer-primary" type="button">
+              <Button
+                className="rounded-full"
+                data-testid="button-footer-primary"
+                type="button"
+              >
                 Get started
                 <ArrowRight className="h-4 w-4" />
               </Button>
@@ -1026,7 +1459,10 @@ function Footer() {
                 Talk to us
               </Button>
             </div>
-            <div className="mt-4 text-xs text-[hsl(var(--muted-foreground))]" data-testid="text-footer-copyright">
+            <div
+              className="mt-4 text-xs text-[hsl(var(--muted-foreground))]"
+              data-testid="text-footer-copyright"
+            >
               © {new Date().getFullYear()} Chakshi. All rights reserved.
             </div>
           </div>
