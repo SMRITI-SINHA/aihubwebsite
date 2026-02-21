@@ -529,7 +529,7 @@ function Highlights() {
       video: "/videos/empty doc+ ai assis demo final - Made with Clipchamp.mp4",
     },
     {
-      title: "Nyaya AI where you need it",
+      title: "Nyaya AI Voice Assistant",
       desc: "Get Nyaya AI help via hover and directly inside DocuChat for faster answers.",
       video: "/videos/Nyaya ai demo final - Made with Clipchamp.mp4",
     },
@@ -779,12 +779,6 @@ function AiHub() {
         icon: MessageSquareText,
         items: [
           {
-            title: "Voice Assistant",
-            desc: "Talk to Nyaya AI using voice for a hands-free, interactive experience.",
-            video: "",
-            points: ["Voice recognition", "Real-time responses", "Hands-free operation"],
-          },
-          {
             title: "CNR Chatbot",
             desc: "Case status lookup using a CNR number.",
             video: "/videos/cnr demo final - Made with Clipchamp.mp4",
@@ -813,6 +807,12 @@ function AiHub() {
               "Citation-backed answers",
               "Structured outputs",
             ],
+          },
+          {
+            title: "Voice Assistant",
+            desc: "Talk to Nyaya AI using voice for a hands-free, interactive experience.",
+            video: "",
+            points: ["Voice recognition", "Real-time responses", "Hands-free operation"],
           },
         ],
       },
