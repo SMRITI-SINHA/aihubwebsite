@@ -5,11 +5,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import AiHubLanding from "./pages/ai-hub";
+import RobotPreview from "./pages/robot-preview";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={AiHubLanding} />
+      <Route path="/embed/robot" component={RobotPreview} />
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>
