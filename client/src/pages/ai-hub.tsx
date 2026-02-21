@@ -1582,7 +1582,6 @@ function VoiceAssistantSection() {
             <div className="grid gap-4" data-testid="grid-voice-assistant-features">
               {[
                 { title: "Press & Speak", desc: "Just hit the mic icon and ask your question naturally.", icon: MessageSquareText },
-                { title: "Interactive LED Expressions", desc: "The robot reacts to your queries with pixel-perfect expressions.", icon: Sparkles },
                 { title: "Same Trusted Engine", desc: "Powered by the exact same reliable Nyaya AI backend.", icon: ShieldCheck },
               ].map((feature, idx) => {
                 const Icon = feature.icon;
