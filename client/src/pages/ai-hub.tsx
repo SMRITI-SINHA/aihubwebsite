@@ -1515,16 +1515,36 @@ function RobotModel() {
     // instead of the built-in GLB animation, as the GLB "Idle" seems to be
     // a stretching/yawning animation rather than a static float.
     if (actions) {
-      // Stop all built-in animations to prevent stretching/yawning
+      // Stop all built-in animations to prevent stretching/yawning by default
       Object.values(actions).forEach(action => action?.stop());
+      
+      // If there's a wave animation, play it occasionally
+      const waveAction = actions["Wave_Hello"];
+      if (waveAction) {
+        const interval = setInterval(() => {
+          waveAction.reset().fadeIn(0.5).play();
+          waveAction.setLoop(THREE.LoopOnce, 1 as number);
+          waveAction.clampWhenFinished = true;
+          
+          // Crossfade back to nothing (static float) when done
+          waveAction.getMixer().addEventListener('finished', () => {
+            waveAction.fadeOut(0.5);
+          });
+        }, 8000); // Wave every 8 seconds
+        
+        return () => {
+          clearInterval(interval);
+          waveAction.getMixer().removeEventListener('finished', () => {});
+        };
+      }
     }
   }, [scene, actions]);
 
   return (
     <Float 
-      speed={2} 
-      rotationIntensity={0.05} 
-      floatIntensity={0.5} 
+      speed={3} 
+      rotationIntensity={0.1} 
+      floatIntensity={1.5} 
     >
       <primitive 
         ref={robotRef} 
