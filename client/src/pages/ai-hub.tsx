@@ -1485,7 +1485,8 @@ function Footer() {
 
 
 function RobotModel() {
-  const { scene } = useGLTF("/models/LexAI_Robot_Final.glb") as any;
+  const { scene, animations } = useGLTF("/models/LexAI_Robot_Final.glb") as any;
+  const { actions } = useAnimations(animations, scene);
   const robotRef = useRef<THREE.Group>(null);
 
   // Fix material transparency issues on load
@@ -1509,7 +1510,14 @@ function RobotModel() {
         }
       });
     }
-  }, [scene]);
+
+    // Play idle animation smoothly
+    const idleAction = actions["Idle"] || actions["Hover_Float"] || (actions && Object.values(actions)[0]);
+    if (idleAction) {
+      idleAction.reset().fadeIn(0.5).play();
+      idleAction.setEffectiveTimeScale(0.5); 
+    }
+  }, [scene, actions]);
 
   return (
     <Float 
