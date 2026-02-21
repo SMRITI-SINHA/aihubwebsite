@@ -1489,12 +1489,18 @@ function RobotModel() {
   const robotRef = useRef<THREE.Group>(null);
 
   return (
-    <primitive 
-      ref={robotRef} 
-      object={scene} 
-      scale={2.6} 
-      position={[0, -1.8, 0]} 
-    />
+    <Float 
+      speed={1.5} 
+      rotationIntensity={0.05} 
+      floatIntensity={0.2} 
+    >
+      <primitive 
+        ref={robotRef} 
+        object={scene} 
+        scale={2.6} 
+        position={[0, -1.8, 0]} 
+      />
+    </Float>
   );
 }
 
@@ -1515,8 +1521,9 @@ function VoiceAssistantSection() {
               <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} />
               <pointLight position={[-10, -10, -10]} intensity={1} />
               <RobotModel />
-              <ContactShadows position={[0, -1.2, 0]} opacity={0.4} scale={5} blur={2} far={4} />
+              <ContactShadows position={[0, -2.5, 0]} opacity={0.4} scale={5} blur={2} far={4} />
               <Environment preset="city" />
+              <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={Math.PI / 3} maxPolarAngle={Math.PI / 1.5} />
               </Canvas>
           </div>
 
