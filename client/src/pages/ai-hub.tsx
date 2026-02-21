@@ -1511,19 +1511,20 @@ function RobotModel() {
       });
     }
 
-    // Play idle animation smoothly
-    const idleAction = actions["Idle"] || actions["Hover_Float"] || (actions && Object.values(actions)[0]);
-    if (idleAction) {
-      idleAction.reset().fadeIn(0.5).play();
-      idleAction.setEffectiveTimeScale(0.5); 
+    // We will just rely on the React Three Drei <Float> component
+    // instead of the built-in GLB animation, as the GLB "Idle" seems to be
+    // a stretching/yawning animation rather than a static float.
+    if (actions) {
+      // Stop all built-in animations to prevent stretching/yawning
+      Object.values(actions).forEach(action => action?.stop());
     }
   }, [scene, actions]);
 
   return (
     <Float 
-      speed={1.5} 
+      speed={2} 
       rotationIntensity={0.05} 
-      floatIntensity={0.2} 
+      floatIntensity={0.5} 
     >
       <primitive 
         ref={robotRef} 
