@@ -1486,74 +1486,68 @@ function Footer() {
 
 function RobotModel() {
   const { scene, animations } = useGLTF("/models/LexAI_Robot_Final.glb") as any;
-  const { actions, mixer } = useAnimations(animations, scene);
+  const { actions } = useAnimations(animations, scene);
   const robotRef = useRef<THREE.Group>(null);
   
+  // Create a target for smooth look-at interpolation
+  const targetRotation = useRef({ x: 0, y: 0 });
+  const currentRotation = useRef({ x: 0, y: 0 });
+  
   useEffect(() => {
-    // Play idle animation by default if available
-    const idleAction = actions["Idle"] || actions["Hover_Float"] || (Object.values(actions)[0]);
+    // Just play the base Idle/Float animation smoothly
+    const idleAction = actions["Idle"] || actions["Hover_Float"] || (actions && Object.values(actions)[0]);
     if (idleAction) {
       idleAction.reset().fadeIn(0.5).play();
+      idleAction.setEffectiveTimeScale(0.5); // Slow down the idle animation to make it calm
     }
     
-    // Periodically play random animations
-    const interval = setInterval(() => {
-      const animNames = ["Thinking_Pose", "Wave_Hello", "Excited_Bounce", "Point_Forward"];
-      const randomAnim = animNames[Math.floor(Math.random() * animNames.length)];
-      
-      if (actions[randomAnim]) {
-        // Fade out current, fade in new
-        mixer.stopAllAction();
-        const action = actions[randomAnim];
-        action.reset().fadeIn(0.5).play();
-        action.setLoop(THREE.LoopOnce, 1 as number);
-        action.clampWhenFinished = true;
-        
-        // Return to idle after animation completes
-        mixer.addEventListener('finished', () => {
-          if (idleAction) {
-            idleAction.reset().fadeIn(0.5).play();
-          }
-        });
-      }
-    }, 8000); // Play a random gesture every 8 seconds
-    
-    return () => {
-      clearInterval(interval);
-      mixer.removeEventListener('finished', () => {});
-    };
-  }, [actions, mixer]);
+    // We remove the random jumping animations that were causing the "shock" effect
+    // and rely on smooth procedural movements and the slowed-down idle state.
+  }, [actions]);
 
   useFrame((state) => {
     if (!robotRef.current) return;
     
-    // Make head track mouse (finding the neck/head bone)
+    // Calculate target rotation based on mouse (clamped to sensible subtle angles)
+    // Map mouse [-1, 1] to a smaller radian range for a cute, subtle look
+    targetRotation.current.y = (state.mouse.x * Math.PI) / 8; // Max 22.5 degrees left/right
+    targetRotation.current.x = -(state.mouse.y * Math.PI) / 12; // Max 15 degrees up/down
+    
+    // Very smooth interpolation for the "follow" effect
+    currentRotation.current.x += (targetRotation.current.x - currentRotation.current.x) * 0.05;
+    currentRotation.current.y += (targetRotation.current.y - currentRotation.current.y) * 0.05;
+    
     let neckBone: THREE.Object3D | null = null;
     scene.traverse((child: THREE.Object3D) => {
-      if (child.name === 'neck' || child.name === 'Head') {
+      // Find the neck or head bone to rotate
+      if (child.name.toLowerCase().includes('neck') || child.name.toLowerCase().includes('head')) {
         neckBone = child;
       }
     });
     
-    const targetX = (state.mouse.x * Math.PI) / 4;
-    const targetY = (state.mouse.y * Math.PI) / 4;
-    
     if (neckBone) {
-      // Rotate head/neck
-      (neckBone as any).rotation.y += (targetX - (neckBone as any).rotation.y) * 0.1;
-      (neckBone as any).rotation.x += (-targetY - (neckBone as any).rotation.x) * 0.1;
+      // Apply the smoothed rotation to the bone
+      (neckBone as THREE.Object3D).rotation.y = currentRotation.current.y;
+      (neckBone as THREE.Object3D).rotation.x = currentRotation.current.x;
     } else {
-      // Fallback: rotate whole robot if bones not found easily
-      robotRef.current.rotation.y += (targetX - robotRef.current.rotation.y) * 0.1;
-      robotRef.current.rotation.x += (-targetY - robotRef.current.rotation.x) * 0.1;
+      // Fallback to rotating the whole model if no bone found
+      robotRef.current.rotation.y = currentRotation.current.y;
+      robotRef.current.rotation.x = currentRotation.current.x;
     }
-
-    // Idle animation (floating) is handled by the Float component wrapper
   });
 
   return (
-    <Float speed={2} rotationIntensity={0.1} floatIntensity={0.3}>
-      <primitive ref={robotRef} object={scene} scale={3.2} position={[0, -2.5, 0]} />
+    <Float 
+      speed={1.5} // Slower float speed
+      rotationIntensity={0.05} // Very subtle rotation drift
+      floatIntensity={0.2} // Very subtle up/down movement
+    >
+      <primitive 
+        ref={robotRef} 
+        object={scene} 
+        scale={3.2} 
+        position={[0, -2.5, 0]} 
+      />
     </Float>
   );
 }
