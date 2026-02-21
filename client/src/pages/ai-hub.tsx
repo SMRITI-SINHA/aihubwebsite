@@ -1485,66 +1485,16 @@ function Footer() {
 
 
 function RobotModel() {
-  const { scene, animations } = useGLTF("/models/LexAI_Robot_Final.glb") as any;
-  const { actions } = useAnimations(animations, scene);
+  const { scene } = useGLTF("/models/LexAI_Robot_Final.glb") as any;
   const robotRef = useRef<THREE.Group>(null);
-  
-  const targetRotation = useRef({ x: 0, y: 0 });
-  const currentRotation = useRef({ x: 0, y: 0 });
-  
-  useEffect(() => {
-    const idleAction = actions["Idle"] || actions["Hover_Float"] || (actions && Object.values(actions)[0]);
-    if (idleAction) {
-      idleAction.reset().fadeIn(0.5).play();
-      idleAction.setEffectiveTimeScale(0.5); 
-    }
-  }, [actions]);
-
-  useFrame((state) => {
-    if (!robotRef.current) return;
-    
-    // Very gentle look-at constraints
-    targetRotation.current.y = (state.mouse.x * Math.PI) / 10;
-    targetRotation.current.x = -(state.mouse.y * Math.PI) / 15;
-    
-    currentRotation.current.x += (targetRotation.current.x - currentRotation.current.x) * 0.05;
-    currentRotation.current.y += (targetRotation.current.y - currentRotation.current.y) * 0.05;
-    
-    let neckBone: THREE.Object3D | null = null;
-    scene.traverse((child: THREE.Object3D) => {
-      if (child.name.toLowerCase().includes('neck') || child.name.toLowerCase().includes('head')) {
-        neckBone = child;
-      }
-    });
-    
-    if (neckBone) {
-      (neckBone as THREE.Object3D).rotation.y = currentRotation.current.y;
-      (neckBone as THREE.Object3D).rotation.x = currentRotation.current.x;
-    } else {
-      robotRef.current.rotation.y = currentRotation.current.y;
-      robotRef.current.rotation.x = currentRotation.current.x;
-    }
-  });
 
   return (
-    <Float 
-      speed={1.5} 
-      rotationIntensity={0.05} 
-      floatIntensity={0.2} 
-    >
-      <primitive 
-        ref={robotRef} 
-        object={scene} 
-        scale={2.4} 
-        position={[0, -1.2, 0]} 
-      />
-      <Html position={[1.2, 1.2, 0]} center>
-        <div className="relative bg-white px-4 py-3 rounded-2xl shadow-md border border-black/5 text-sm font-medium whitespace-nowrap text-[hsl(var(--foreground))]">
-          Hi! I'm Nyaya AI.<br/>How can I assist you today?
-          <div className="absolute -bottom-2 left-4 w-4 h-4 bg-white border-b border-r border-black/5 transform rotate-45"></div>
-        </div>
-      </Html>
-    </Float>
+    <primitive 
+      ref={robotRef} 
+      object={scene} 
+      scale={2.6} 
+      position={[0, -1.8, 0]} 
+    />
   );
 }
 
@@ -1567,8 +1517,7 @@ function VoiceAssistantSection() {
               <RobotModel />
               <ContactShadows position={[0, -1.2, 0]} opacity={0.4} scale={5} blur={2} far={4} />
               <Environment preset="city" />
-              <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={Math.PI / 3} maxPolarAngle={Math.PI / 1.5} />
-            </Canvas>
+              </Canvas>
           </div>
 
           <div className="grid gap-6">
