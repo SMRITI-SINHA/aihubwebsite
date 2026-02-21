@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, useAnimations, Float, ContactShadows, Environment, OrbitControls } from "@react-three/drei";
+import { useGLTF, useAnimations, Float, ContactShadows, Environment, OrbitControls, Html } from "@react-three/drei";
 import { useEffect } from "react";
 import * as THREE from "three";
 import { useRef } from "react";
@@ -1538,6 +1538,12 @@ function RobotModel() {
         scale={2.4} 
         position={[0, -1.2, 0]} 
       />
+      <Html position={[1.2, 1.2, 0]} center>
+        <div className="relative bg-white px-4 py-3 rounded-2xl shadow-md border border-black/5 text-sm font-medium whitespace-nowrap text-[hsl(var(--foreground))]">
+          Hi! I'm Nyaya AI.<br/>How can I assist you today?
+          <div className="absolute -bottom-2 left-4 w-4 h-4 bg-white border-b border-r border-black/5 transform rotate-45"></div>
+        </div>
+      </Html>
     </Float>
   );
 }
